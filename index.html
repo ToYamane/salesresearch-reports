@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>営業リサーチレポート一覧</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* 追加のインラインスタイル */
+    .loading {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-secondary);
+    }
+    .loading-spinner {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border-light);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .error-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--danger);
+    }
+    .filter-bar {
+      max-width: 1200px;
+      margin: 0 auto 1.5rem;
+      padding: 0 1.5rem;
+    }
+    .filter-bar input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border-light);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    .filter-bar input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .report-count {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="report-list-header">
+    <h1>営業リサーチレポート一覧</h1>
+    <p>生成されたレポートの履歴を閲覧できます</p>
+  </header>
+
+  <!-- 検索フィルター -->
+  <div class="filter-bar">
+    <input type="text" id="searchInput" placeholder="人物名や会社名で検索..." oninput="filterReports()">
+  </div>
+
+  <!-- レポート件数 -->
+  <div class="report-count" id="reportCount"></div>
+
+  <!-- レポート一覧 -->
+  <main id="reportList" class="report-grid">
+    <div class="loading">
+      <div class="loading-spinner"></div>
+      <p>レポート一覧を読み込み中...</p>
+    </div>
+  </main>
+
+  <!-- フッター -->
+  <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem;">
+    <p>営業リサーチ自動化システム</p>
+  </footer>
+
+  <script>
+    let allReports = [];
+
+    // レポート一覧を取得
+    async function loadReports() {
+      const reportList = document.getElementById('reportList');
+
+      try {
+        const response = await fetch('reports.json');
+        if (!response.ok) {
+          throw new Error('レポート一覧の取得に失敗しました');
+        }
+
+        const data = await response.json();
+        allReports = data.reports || [];
+
+        // 日付の新しい順にソート
+        allReports.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+        renderReports(allReports);
+      } catch (error) {
+        console.error('Error loading reports:', error);
+        reportList.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <p>レポートがまだありません。</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-muted);">
+              /research コマンドでレポートを生成してください。
+            </p>
+          </div>
+        `;
+        updateCount(0);
+      }
+    }
+
+    // レポートを描画
+    function renderReports(reports) {
+      const reportList = document.getElementById('reportList');
+
+      if (reports.length === 0) {
+        reportList.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <p>該当するレポートが見つかりません。</p>
+          </div>
+        `;
+        updateCount(0);
+        return;
+      }
+
+      reportList.innerHTML = reports.map(report => {
+        const createdDate = new Date(report.created_at);
+        const dateStr = createdDate.toLocaleDateString('ja-JP', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        const timeStr = createdDate.toLocaleTimeString('ja-JP', {
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        return `
+          <a href="reports/${report.id}.html" class="report-list-card">
+            <div class="person-name">${escapeHtml(report.person_name)} 様</div>
+            <div class="company-name">${escapeHtml(report.company_name)}</div>
+            <div class="report-date">${dateStr} ${timeStr}</div>
+          </a>
+        `;
+      }).join('');
+
+      updateCount(reports.length);
+    }
+
+    // 検索フィルター
+    function filterReports() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+      const filtered = allReports.filter(report => {
+        const personName = (report.person_name || '').toLowerCase();
+        const companyName = (report.company_name || '').toLowerCase();
+        return personName.includes(searchTerm) || companyName.includes(searchTerm);
+      });
+
+      renderReports(filtered);
+    }
+
+    // 件数を更新
+    function updateCount(count) {
+      const countEl = document.getElementById('reportCount');
+      countEl.textContent = `${count}件のレポート`;
+    }
+
+    // HTMLエスケープ
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // 初期読み込み
+    document.addEventListener('DOMContentLoaded', loadReports);
+  </script>
+</body>
+</html>

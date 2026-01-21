@@ -1,0 +1,597 @@
+/* 営業リサーチレポート - 共通CSS */
+
+/* CSS変数（テーマカラー） */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --success-light: #22c55e;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --bg-main: #f1f5f9;
+  --bg-card: #f8fafc;
+  --bg-white: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* リセット & ベース */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+}
+
+/* コンテナ */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* レポートヘッダー */
+.report-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.report-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.report-header .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.report-header .meta-item strong {
+  font-weight: 600;
+}
+
+/* ダウンロードボタン */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* セクション */
+.section {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: 0.75rem;
+}
+
+/* サブセクション */
+.subsection {
+  margin-bottom: 1.5rem;
+}
+
+.subsection:last-child {
+  margin-bottom: 0;
+}
+
+.subsection-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--primary);
+}
+
+/* 情報リスト */
+.info-list {
+  list-style: none;
+}
+
+.info-list li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.info-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.info-list .label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.info-list .value {
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+/* 強みカード */
+.strengths-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, #e0f2fe 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.strengths-card p {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+/* 商材カード */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-card:last-child {
+  margin-bottom: 0;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-rank {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.product-rank.rank-1 { background: #fef3c7; color: #b45309; }
+.product-rank.rank-2 { background: #e5e7eb; color: #374151; }
+.product-rank.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* スコアバッジ */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.score-badge.high {
+  background: #dcfce7;
+  color: var(--success);
+}
+
+.score-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.score-badge.low {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+/* スコア内訳 */
+.score-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.score-item {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.score-item .score-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.score-item .score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.score-item .score-max {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 商材詳細 */
+.product-detail-section {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-detail-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.product-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.product-meta-item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-meta-item .label {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.product-meta-item .value {
+  font-weight: 500;
+}
+
+/* 理由リスト */
+.reason-list {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.reason-list li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.reason-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 販売戦略セクション */
+.strategy-section {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 1px solid #fde68a;
+}
+
+.strategy-item {
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.strategy-item:last-child {
+  margin-bottom: 0;
+}
+
+.steps-list {
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps-list li {
+  counter-increment: step;
+  padding: 0.75rem 0 0.75rem 2.5rem;
+  position: relative;
+  border-left: 2px solid var(--border-light);
+  margin-left: 0.75rem;
+}
+
+.steps-list li::before {
+  content: 'Step ' counter(step);
+  position: absolute;
+  left: -1rem;
+  top: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  background: var(--primary);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps-list li:last-child {
+  border-left-color: transparent;
+}
+
+/* Q&Aスタイル */
+.qa-item {
+  margin-bottom: 1rem;
+}
+
+.qa-item:last-child {
+  margin-bottom: 0;
+}
+
+.qa-question {
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  background: #fee2e2;
+  border-radius: 8px 8px 0 0;
+}
+
+.qa-answer {
+  padding: 0.75rem 1rem;
+  background: #dcfce7;
+  border-radius: 0 0 8px 8px;
+}
+
+/* リンク */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 一覧ページ用スタイル */
+.report-list-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.report-list-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-list-header p {
+  opacity: 0.9;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.report-list-card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.report-list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+}
+
+.report-list-card .person-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.report-list-card .company-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.report-list-card .report-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* 空状態 */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+}
+
+/* 印刷用スタイル */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .report-header {
+    background: var(--primary) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-after: avoid;
+  }
+
+  .section {
+    box-shadow: none;
+    border: 1px solid var(--border-light);
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  .product-card {
+    page-break-inside: avoid;
+  }
+
+  .score-breakdown {
+    gap: 0.5rem;
+  }
+
+  a {
+    color: var(--text-primary);
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .report-header {
+    padding: 1.5rem;
+  }
+
+  .report-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .score-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .product-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+}
