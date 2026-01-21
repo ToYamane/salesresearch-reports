@@ -145,10 +145,32 @@
           minute: '2-digit'
         });
 
+        // 商材TOP5を表示
+        let productsHtml = '';
+        if (report.top_products && report.top_products.length > 0) {
+          const productItems = report.top_products.map((p, index) => {
+            const rankClass = index < 3 ? `rank-${index + 1}` : '';
+            return `
+              <li class="card-product-item ${rankClass}">
+                <span class="card-product-rank">${index + 1}</span>
+                <span class="card-product-name">${escapeHtml(p.name)}</span>
+                <span class="card-product-score">${p.score}/30</span>
+              </li>
+            `;
+          }).join('');
+          productsHtml = `
+            <div class="card-products">
+              <div class="card-products-title">推奨商材</div>
+              <ol class="card-products-list">${productItems}</ol>
+            </div>
+          `;
+        }
+
         return `
           <a href="reports/${report.id}.html" class="report-list-card">
             <div class="person-name">${escapeHtml(report.person_name)} 様</div>
             <div class="company-name">${escapeHtml(report.company_name)}</div>
+            ${productsHtml}
             <div class="report-date">${dateStr} ${timeStr}</div>
           </a>
         `;

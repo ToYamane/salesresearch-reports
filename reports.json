@@ -5,6 +5,34 @@
       "person_name": "結城耕造",
       "company_name": "株式会社システムソフト",
       "created_at": "2026-01-21T16:13:12.366325"
+    },
+    {
+      "id": "okeyama_yuhei_ulurubpo_20260121_165901",
+      "person_name": "桶山侑平",
+      "company_name": "株式会社うるるBPO",
+      "created_at": "2026-01-21T16:59:02.696017",
+      "top_products": [
+        {
+          "name": "研修サービス（DX/AI人材育成）",
+          "score": 29
+        },
+        {
+          "name": "デジタルレシピ（生成AI/DX支援）",
+          "score": 28
+        },
+        {
+          "name": "E-STAMP（電子契約・電子印鑑）",
+          "score": 26
+        },
+        {
+          "name": "FREE JOB（求人・採用支援）",
+          "score": 25
+        },
+        {
+          "name": "前払いできるくん（給与前払い）",
+          "score": 24
+        }
+      ]
     }
   ]
 }
