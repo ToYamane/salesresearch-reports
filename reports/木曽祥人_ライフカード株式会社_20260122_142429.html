@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>営業リサーチレポート - 木曽祥人 様</title>
+  <style>/* 営業リサーチレポート - 共通CSS */
+
+/* CSS変数（テーマカラー） */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --success-light: #22c55e;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --bg-main: #f1f5f9;
+  --bg-card: #f8fafc;
+  --bg-white: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* リセット &amp; ベース */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: &#39;Hiragino Kaku Gothic ProN&#39;, &#39;Hiragino Sans&#39;, &#39;Meiryo&#39;, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+}
+
+/* コンテナ */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* レポートヘッダー */
+.report-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.report-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.report-header .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.report-header .meta-item strong {
+  font-weight: 600;
+}
+
+/* ランキングサマリー */
+.ranking-summary {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.ranking-summary-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.ranking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border-left: 4px solid var(--border-medium);
+}
+
+.ranking-item:nth-child(1) { border-left-color: #f59e0b; background: #fffbeb; }
+.ranking-item:nth-child(2) { border-left-color: #9ca3af; background: #f9fafb; }
+.ranking-item:nth-child(3) { border-left-color: #d97706; background: #fff7ed; }
+
+.rank-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--border-light);
+  color: var(--text-secondary);
+}
+
+.rank-badge.rank-1 { background: #fef3c7; color: #b45309; }
+.rank-badge.rank-2 { background: #e5e7eb; color: #374151; }
+.rank-badge.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.rank-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rank-score {
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: var(--bg-white);
+}
+
+.rank-score.high { color: var(--success); }
+.rank-score.medium { color: #b45309; }
+.rank-score.low { color: var(--danger); }
+
+/* セクション */
+.section {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: 0.75rem;
+}
+
+/* サブセクション */
+.subsection {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: var(--bg-white);
+}
+
+.subsection:nth-child(odd) {
+  background: var(--bg-card);
+}
+
+.subsection:last-child {
+  margin-bottom: 0;
+}
+
+.subsection-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--primary);
+}
+
+/* 情報リスト */
+.info-list {
+  list-style: none;
+}
+
+.info-list li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.info-list li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.info-list .label {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.info-list .value {
+  font-weight: 500;
+  margin-left: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* 強みカード */
+.strengths-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, #e0f2fe 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.strengths-card p {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+/* 商材カード */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-card:last-child {
+  margin-bottom: 0;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-rank {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.product-rank.rank-1 { background: #fef3c7; color: #b45309; }
+.product-rank.rank-2 { background: #e5e7eb; color: #374151; }
+.product-rank.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* スコアバッジ */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.score-badge.high {
+  background: #dcfce7;
+  color: var(--success);
+}
+
+.score-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.score-badge.low {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+/* スコア内訳 */
+.score-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.score-item {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.score-item .score-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.score-item .score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.score-item .score-max {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 商材詳細 */
+.product-detail-section {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-detail-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.product-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.product-meta-item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-meta-item .label {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.product-meta-item .value {
+  font-weight: 500;
+}
+
+/* 理由リスト */
+.reason-list {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.reason-list li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.reason-list li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 販売戦略セクション */
+.strategy-section {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 1px solid #fde68a;
+}
+
+.strategy-item {
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.strategy-item:last-child {
+  margin-bottom: 0;
+}
+
+.steps-list {
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps-list li {
+  counter-increment: step;
+  padding: 0.75rem 0 0.75rem 2.5rem;
+  position: relative;
+  border-left: 2px solid var(--border-light);
+  margin-left: 0.75rem;
+}
+
+.steps-list li::before {
+  content: &#39;Step &#39; counter(step);
+  position: absolute;
+  left: -1rem;
+  top: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  background: var(--primary);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps-list li:last-child {
+  border-left-color: transparent;
+}
+
+/* Q&amp;Aスタイル */
+.qa-item {
+  margin-bottom: 1rem;
+}
+
+.qa-item:last-child {
+  margin-bottom: 0;
+}
+
+.qa-question {
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  background: #fee2e2;
+  border-radius: 8px 8px 0 0;
+}
+
+.qa-answer {
+  padding: 0.75rem 1rem;
+  background: #dcfce7;
+  border-radius: 0 0 8px 8px;
+}
+
+/* リンク */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 一覧ページ用スタイル */
+.report-list-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.report-list-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-list-header p {
+  opacity: 0.9;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.report-list-card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.report-list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+}
+
+.report-list-card .person-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.report-list-card .company-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.report-list-card .report-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* 一覧カード内の商材リスト */
+.card-products {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  background: var(--bg-card);
+  border-radius: 6px;
+}
+
+.card-products-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.card-products-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card-product-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.25rem 0;
+  border-left: 3px solid var(--border-light);
+  padding-left: 0.5rem;
+}
+
+.card-product-item.rank-1 { border-left-color: #f59e0b; }
+.card-product-item.rank-2 { border-left-color: #9ca3af; }
+.card-product-item.rank-3 { border-left-color: #d97706; }
+
+.card-product-rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--border-light);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.card-product-item.rank-1 .card-product-rank { background: #fef3c7; color: #b45309; }
+.card-product-item.rank-2 .card-product-rank { background: #e5e7eb; color: #374151; }
+.card-product-item.rank-3 .card-product-rank { background: #fed7aa; color: #c2410c; }
+
+.card-product-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-product-score {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+/* 空状態 */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+}
+
+/* 参照URLリスト */
+.reference-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.reference-list li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.reference-list li::before {
+  content: &#39;📄&#39;;
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+}
+
+.reference-list a {
+  color: var(--primary);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.reference-list a:hover {
+  text-decoration: underline;
+}
+
+/* 印刷用スタイル */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .report-header {
+    background: var(--primary) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-after: avoid;
+  }
+
+  .section {
+    box-shadow: none;
+    border: 1px solid var(--border-light);
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  .product-card {
+    page-break-inside: avoid;
+  }
+
+  .score-breakdown {
+    gap: 0.5rem;
+  }
+
+  a {
+    color: var(--text-primary);
+  }
+
+  a[href]::after {
+    content: &#39; (&#39; attr(href) &#39;)&#39;;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+}
+
+/* ===========================================
+   新セクション用スタイル（品質向上対応）
+   =========================================== */
+
+/* 職歴詳細スタイル */
+.work-history-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.work-history-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.work-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.work-company {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.work-period {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.work-role {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.work-achievements,
+.work-projects {
+  margin-top: 0.75rem;
+}
+
+.achievements-label,
+.projects-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.work-achievements ul,
+.work-projects ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.work-achievements li,
+.work-projects li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.work-achievements li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.work-projects li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.work-scope {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.scope-item {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: #e0f2fe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.no-data {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* 営業経験セクション */
+.sales-experience {
+  background: #f0fdf4 !important;
+}
+
+.sales-experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sales-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sales-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sales-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.sales-achievements,
+.sales-networks {
+  background: var(--bg-white);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+}
+
+.sales-achievements h4,
+.sales-networks h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.sales-achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sales-achievements li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.sales-achievements li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 人脈の質的評価 */
+.network-quality {
+  background: #e0f2fe !important;
+}
+
+.network-item {
+  margin-bottom: 1rem;
+}
+
+.network-item:last-child {
+  margin-bottom: 0;
+}
+
+.decision-maker-access {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.network-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.network-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.network-badge.high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.network-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.network-badge.low {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.network-item h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.positions-list,
+.speaking-list,
+.media-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.positions-list li,
+.speaking-list li,
+.media-list li {
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.positions-list li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.speaking-list li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--warning);
+  border-radius: 50%;
+}
+
+.media-list li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.influence {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.influence-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.influence-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* 起業志向セクション */
+.entrepreneurial {
+  background: #fef3c7 !important;
+}
+
+.readiness-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.readiness-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.readiness-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.readiness-badge.高 {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.readiness-badge.中 {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.readiness-badge.低 {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.entrepreneurial-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.entrepreneurial-item {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.ent-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.ent-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* この人だからこそ売れる理由 */
+.why-this-person {
+  background: #f0fdf4;
+  border-radius: 8px;
+  padding: 1rem !important;
+  margin-top: 1rem;
+}
+
+.why-this-person-content {
+  background: var(--bg-white);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+}
+
+.why-this-person-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* 成功シナリオ */
+.success-scenario {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+  border: 1px solid #86efac;
+}
+
+.scenario-content {
+  background: var(--bg-white);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+}
+
+.scenario-content p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* リスク要因 */
+.risk-factors {
+  background: #fff7ed !important;
+  border: 1px solid #fdba74;
+}
+
+.risk-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.risk-list li {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: var(--bg-white);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid var(--warning);
+}
+
+.risk-list li:last-child {
+  margin-bottom: 0;
+}
+
+.risk-list li::before {
+  content: &#39;&#39;;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 8px;
+  height: 8px;
+  background: var(--warning);
+  border-radius: 50%;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .report-header {
+    padding: 1.5rem;
+  }
+
+  .report-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .score-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .product-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .decision-maker-access {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .readiness-indicator {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entrepreneurial-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- レポートヘッダー -->
+    <header class="report-header">
+      <h1>営業リサーチレポート</h1>
+      <div class="meta">
+        <div class="meta-item">
+          <span>対象:</span>
+          <strong>木曽祥人 様 / ライフカード株式会社</strong>
+        </div>
+        <div class="meta-item">
+          <span>作成日:</span>
+          <strong>2026年01月22日</strong>
+        </div>
+      </div>
+    </header>
+
+    <!-- ランキングサマリー -->
+    <section class="ranking-summary no-print">
+      <h2 class="ranking-summary-title">推奨商材 TOP5</h2>
+      <ol class="ranking-list">
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-1">1</span>
+          <span class="rank-name">プロミスVISA</span>
+          <span class="rank-score medium">23/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-2">2</span>
+          <span class="rank-name">資産形成（相談・情報）</span>
+          <span class="rank-score medium">20/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-3">3</span>
+          <span class="rank-name">決済プラットフォーム</span>
+          <span class="rank-score medium">23/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-4">4</span>
+          <span class="rank-name">アコム</span>
+          <span class="rank-score medium">23/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-5">5</span>
+          <span class="rank-name">ベストチョイス</span>
+          <span class="rank-score medium">19/30</span>
+        </li>
+        
+      </ol>
+    </section>
+
+    <!-- セクション1: 人物プロファイル -->
+    <section class="section profile-section">
+      <h2 class="section-title">
+        <span class="section-number">1</span>
+        人物プロファイル
+      </h2>
+
+      <!-- 基本情報 -->
+      <div class="subsection">
+        <h3 class="subsection-title">基本情報</h3>
+        <ul class="info-list">
+          <li>
+            <span class="label">氏名:</span>
+            <span class="value">木曽祥人</span>
+          </li>
+          <li>
+            <span class="label">会社名:</span>
+            <span class="value">ライフカード株式会社</span>
+          </li>
+          <li>
+            <span class="label">役職:</span>
+            <span class="value">営業第二部長</span>
+          </li>
+          <li>
+            <span class="label">現在のステータス:</span>
+            <span class="value">会社員（現在はアイフル本体に異動）</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 経歴・専門性 -->
+      <div class="subsection">
+        <h3 class="subsection-title">経歴・専門性</h3>
+        
+        <div class="work-history-detail">
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">ライフカード株式会社</span>
+              <span class="work-period">2013年〜2017年（推定）</span>
+            </div>
+            <div class="work-role">プリペイドカード推進部 課長 / 4年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>Vプリカ事業の推進担当として、累計発行755万枚・発行額424億円規模の事業に貢献</li>
+                
+                <li>Visaブランド日本国内最大のバーチャルプリペイドカードプロバイダーとしての地位確立に寄与</li>
+                
+              </ul>
+            </div>
+            
+            
+            <div class="work-scope">
+              <span class="scope-item">（未確認）</span>
+              <span class="scope-item">プリペイドカード事業の戦略立案・推進</span>
+            </div>
+            
+            
+            <div class="work-projects">
+              <span class="projects-label">主要プロジェクト:</span>
+              <ul>
+                
+                <li>Vプリカ事業拡大</li>
+                
+                <li>バーチャルプリペイドカード市場開拓</li>
+                
+              </ul>
+            </div>
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">ライフカード株式会社</span>
+              <span class="work-period">2017年4月〜2020年3月</span>
+            </div>
+            <div class="work-role">営業第二部長 / 3年</div>
+            
+            
+            <div class="work-scope">
+              <span class="scope-item">（未確認）</span>
+              <span class="scope-item">営業第二部門の統括・戦略立案</span>
+            </div>
+            
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">アイフル株式会社</span>
+              <span class="work-period">2020年4月〜2024年9月</span>
+            </div>
+            <div class="work-role">営業推進部長兼管理推進部長 / 4年</div>
+            
+            
+            <div class="work-scope">
+              <span class="scope-item">（未確認）</span>
+              <span class="scope-item">営業推進・管理推進の両部門を統括</span>
+            </div>
+            
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">アイフル株式会社</span>
+              <span class="work-period">2024年10月〜現在</span>
+            </div>
+            <div class="work-role">カウンセリングセンター部長兼管理推進部長 / 1年</div>
+            
+            
+            <div class="work-scope">
+              <span class="scope-item">（未確認）</span>
+              <span class="scope-item">カウンセリングセンター・管理推進の統括</span>
+            </div>
+            
+            
+          </div>
+          
+        </div>
+        
+        <ul class="info-list" style="margin-top: 1rem;">
+          <li>
+            <span class="label">専門知識領域:</span>
+            <span class="value">クレジットカード事業, プリペイドカード（Vプリカ）, 決済サービス, 金融商品, 債権管理, 営業推進, カウンセリング・債務整理対応</span>
+          </li>
+          <li>
+            <span class="label">保有資格:</span>
+            <span class="value">なし</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 営業・ビジネス開発経験 -->
+      
+      <div class="subsection sales-experience">
+        <h3 class="subsection-title">営業・ビジネス開発経験</h3>
+        <div class="sales-experience-grid">
+          <div class="sales-info-item">
+            <span class="sales-label">営業経験年数</span>
+            <span class="sales-value">7年（法人営業・B2B）</span>
+          </div>
+          
+          <div class="sales-info-item">
+            <span class="sales-label">顧客規模</span>
+            <span class="sales-value">（未確認）</span>
+          </div>
+          
+          
+          <div class="sales-info-item">
+            <span class="sales-label">取扱商材</span>
+            <span class="sales-value">クレジットカード、プリペイドカード、金融サービス</span>
+          </div>
+          
+          
+          <div class="sales-info-item">
+            <span class="sales-label">営業スタイル</span>
+            <span class="sales-value">（未確認）</span>
+          </div>
+          
+        </div>
+        
+        
+        <div class="sales-networks">
+          <h4>営業を通じて構築した人脈</h4>
+          <p>金融業界、決済事業者、加盟店</p>
+        </div>
+        
+      </div>
+      
+
+      <!-- 人脈・ネットワーク -->
+      <div class="subsection">
+        <h3 class="subsection-title">人脈・ネットワーク</h3>
+        <ul class="info-list">
+          <li>
+            <span class="label">人脈のある業界:</span>
+            <span class="value">金融, クレジットカード, 決済サービス, フィンテック, 消費者金融</span>
+          </li>
+          <li>
+            <span class="label">ネットワーク規模:</span>
+            <span class="value">（未確認）</span>
+          </li>
+          <li>
+            <span class="label">発見したアカウント:</span>
+            <span class="value">
+              
+                なし
+              
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 人脈の質的評価 -->
+      
+      <div class="subsection network-quality">
+        <h3 class="subsection-title">人脈・影響力の詳細</h3>
+        
+        <div class="network-item decision-maker-access">
+          <span class="network-label">決裁者へのアクセス度:</span>
+          <span class="network-badge high">
+            中〜高（部長職として業界内の決裁者との接点あり）
+          </span>
+        </div>
+        
+        
+        
+        
+        <div class="network-item">
+          <h4>メディア露出</h4>
+          <ul class="media-list">
+            
+            <li>ペイメントナビ インタビュー記事（2016年8月）- Vプリカ事業について</li>
+            
+          </ul>
+        </div>
+        
+        
+        <div class="network-item influence">
+          <span class="influence-label">影響力指標:</span>
+          <span class="influence-value">アイフルグループ（東証プライム上場）の部長職として業界内での認知度あり</span>
+        </div>
+        
+      </div>
+      
+
+      <!-- 起業・独立志向 -->
+      
+      <div class="subsection entrepreneurial">
+        <h3 class="subsection-title">起業・独立志向</h3>
+        
+        <div class="readiness-indicator">
+          <span class="readiness-label">独立準備度:</span>
+          <span class="readiness-badge （未確認）">
+            （未確認）
+          </span>
+        </div>
+        
+        <div class="entrepreneurial-details">
+          
+          
+          
+          
+          <div class="entrepreneurial-item">
+            <span class="ent-label">独立への関心:</span>
+            <span class="ent-value">（未確認）</span>
+          </div>
+          
+        </div>
+      </div>
+      
+
+      <!-- 参照URL -->
+      
+      <div class="subsection">
+        <h3 class="subsection-title">参照URL</h3>
+        <ul class="reference-list">
+          
+          <li>
+            <a href="https://personnel-change.com/person/2003016" target="_blank" rel="noopener noreferrer">
+              アイフル株式会社 木曽祥人 人事異動・経歴
+            </a>
+          </li>
+          
+          <li>
+            <a href="https://paymentnavi.com/paymentnews/59222.html" target="_blank" rel="noopener noreferrer">
+              ペイメントナビ - ライフカード Vプリカ事業インタビュー
+            </a>
+          </li>
+          
+          <li>
+            <a href="https://www.nikkei.com/article/DGXLMSJY50201_U7A120C1000000/" target="_blank" rel="noopener noreferrer">
+              日本経済新聞 人事情報
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- この人物の強み -->
+      
+      <div class="subsection">
+        <h3 class="subsection-title">この人物の強み</h3>
+        <div class="strengths-card">
+          <p>ライフカードでプリペイドカード推進部課長・営業第二部長を歴任し、Vプリカ事業（累計755万枚発行）の成長に貢献。その後アイフル本体で営業推進部長・管理推進部長を務め、現在はカウンセリングセンター部長として債務整理対応も経験。金融・決済業界での10年以上の経験と部長職としての組織マネジメント経験を持つ。クレジットカード・プリペイドカード・消費者金融という幅広い金融サービスの知見があり、業界内ネットワークを活かした営業活動が期待できる。</p>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- セクション2: 推奨商材 -->
+    <section class="section products-section">
+      <h2 class="section-title">
+        <span class="section-number">2</span>
+        推奨商材（上位5件）
+      </h2>
+
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-1">第1位</span>
+          <span class="product-name">プロミスVISA</span>
+          <span class="score-badge medium">
+            23/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">アフィリエイト</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">クレジットカード/カードローン</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">資産・家計</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">個人</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">クレジットカード機能付きカードローン</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】ライフカードで営業第二部長、アイフルで営業推進部長を歴任し、クレジットカード・カードローン業界で10年以上の経験。Vプリカ事業では累計755万枚発行の事業成長に貢献しており、金融商品の営業推進に精通。</li>
+            
+            <li>【人脈マッチ】アイフルグループ（ライフカード・アイフル）での部長経験から、金融業界・決済事業者との人脈を保有。カードローン商品の提携先や販売チャネルへのアクセスが期待できる。</li>
+            
+            <li>【専門知識】クレジットカード、プリペイドカード、消費者金融という幅広い金融サービスの実務経験から、カードローン商品の仕組み・リスク・価値を的確に説明可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">消費者金融・クレジットカード会社の営業担当者、金融商品代理店、アフィリエイター、金融系メディア運営者</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+
+        <!-- 活用事例 -->
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> アフィリエイト案件。成果報酬型。</p>
+          
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">まずアイフルグループ時代の人脈を活用し、金融業界の営業担当者・代理店にアプローチ。自身のライフカード・アイフルでの営業推進経験を共有し、カードローン商品の効果的な販売手法について情報交換。その後、プロミスVISAの特徴（クレジット機能付き）を活かした差別化ポイントを提案し、代理店契約やアフィリエイト提携を獲得。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>クレジットカード・カードローン両方の事業経験を持ち、Vプリカ事業の成功体験から新しい金融商品の市場開拓手法を熟知。単なる営業ではなく、事業成長を牽引した経験者として信頼を得やすい。※一部情報は本人確認が必要。</p>
+          </div>
+        </div>
+        
+
+        <!-- 参照URL -->
+        
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-2">第2位</span>
+          <span class="product-name">資産形成（相談・情報）</span>
+          <span class="score-badge medium">
+            20/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">アフィリエイト</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">金融/資産形成</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">資産・家計</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">個人</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">資産形成に関する相談・情報提供サービス</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】金融業界で10年以上のキャリアを持ち、クレジットカード・消費者金融という個人向け金融サービスに精通。資産形成の前段階である「家計管理」「借入管理」の観点からアドバイスが可能。</li>
+            
+            <li>【人脈マッチ】金融業界での人脈から、FP（ファイナンシャルプランナー）、保険代理店、証券会社などの資産形成関連事業者へのアクセスが可能。</li>
+            
+            <li>【専門知識】カウンセリングセンター部長として債務整理対応も経験しており、借入と返済のバランス、家計管理の重要性を実務レベルで理解。資産形成の「入口」として説得力のある提案が可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">金融機関の営業担当者、FP事務所、保険代理店、資産形成セミナー主催者</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+
+        <!-- 活用事例 -->
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> アフィリエイト案件。成果報酬型。</p>
+          
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">金融業界の人脈を活用し、FPや保険代理店にアプローチ。カウンセリングセンターでの経験から「債務管理から資産形成へ」というストーリーを提案し、顧客の家計改善をトータルでサポートするパートナーシップを構築。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>消費者金融でのカウンセリング経験から、借入に悩む顧客の心理を理解しており、資産形成への転換を説得力を持って提案できる。※詳細な実績は本人確認が必要。</p>
+          </div>
+        </div>
+        
+
+        <!-- 参照URL -->
+        
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-3">第3位</span>
+          <span class="product-name">決済プラットフォーム</span>
+          <span class="score-badge medium">
+            23/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">GMOペイメントゲートウェイ㈱</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">決済代行/決済プラットフォーム</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">娯楽・学習</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">法人</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">ECサイト・店舗向け決済代行サービス</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】ライフカードでVプリカ事業を推進し、Visaブランドのバーチャルプリペイドカードで国内最大のプロバイダーに成長させた経験あり。決済プラットフォームの仕組みと加盟店ニーズを深く理解している。</li>
+            
+            <li>【人脈マッチ】クレジットカード・プリペイドカード事業を通じて、ECサイト運営者、加盟店、決済事業者との接点を持つ。決済プラットフォームのターゲット顧客への直接アプローチが可能。</li>
+            
+            <li>【専門知識】Vプリカ（バーチャルプリペイドカード）の事業経験から、オンライン決済の技術・セキュリティ・顧客体験を熟知。決済代行サービスの価値を技術面・ビジネス面の両方から説明可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">ECサイト運営企業、オンラインサービス事業者、サブスクリプションサービス提供者、デジタルコンテンツ販売者</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+
+        <!-- 活用事例 -->
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> （要確認）法人向け代理店制度あり。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>EC事業者向け導入実績多数</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">まずVプリカ時代の加盟店ネットワークを活用し、ECサイト運営者にアプローチ。Vプリカ導入経験から得た「オンライン決済の課題と解決策」を共有し、GMOペイメントゲートウェイの決済プラットフォームを提案。導入後のサポートも含めた長期的なパートナーシップを構築。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>Vプリカ事業で累計755万枚・424億円規模の決済を処理した経験から、決済プラットフォームの導入効果を数値で示すことができる。加盟店の立場を理解した提案が可能。※一部情報は本人確認が必要。</p>
+          </div>
+        </div>
+        
+
+        <!-- 参照URL -->
+        
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-4">第4位</span>
+          <span class="product-name">アコム</span>
+          <span class="score-badge medium">
+            23/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">アフィリエイト</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">消費者金融カードローン</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">資産・家計</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">個人</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">大手消費者金融のカードローン</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】アイフル（消費者金融大手）で営業推進部長・カウンセリングセンター部長を歴任。消費者金融業界の競合環境、商品特性、顧客層を熟知している。</li>
+            
+            <li>【人脈マッチ】消費者金融業界での人脈から、ローン比較サイト運営者、金融系アフィリエイター、金融メディアへのアクセスが可能。</li>
+            
+            <li>【専門知識】カウンセリングセンター部長として債務整理対応も経験しており、カードローンの「出口」まで含めた知識を保有。責任ある借入の提案が可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">金融系アフィリエイター、ローン比較サイト運営者、金融メディア、FP事務所</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+
+        <!-- 活用事例 -->
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> アフィリエイト案件。成果報酬型。</p>
+          
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">消費者金融業界での経験を活かし、金融系アフィリエイターやメディア運営者にアプローチ。「責任ある借入」の観点から、アコムの商品特性と顧客メリットを説明。カウンセリング経験を活かした「顧客目線のコンテンツ作成アドバイス」を付加価値として提供。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>アイフル（競合）での実務経験から、消費者金融業界の内情を理解しつつ、中立的な立場でアコムの強みを説明できる。業界全体の健全な発展を意識した提案が可能。※詳細は本人確認が必要。</p>
+          </div>
+        </div>
+        
+
+        <!-- 参照URL -->
+        
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-5">第5位</span>
+          <span class="product-name">ベストチョイス</span>
+          <span class="score-badge medium">
+            19/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">アフィリエイト</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">FP/金融・保険相談</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">資産・家計</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">個人</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">FPによる金融・保険の無料相談サービス</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】金融業界での長年の経験から、個人の資産形成・家計管理の重要性を理解。カードローンの営業推進とカウンセリング対応の両方を経験しており、金融相談の価値を実感している。</li>
+            
+            <li>【人脈マッチ】金融業界の人脈から、保険代理店、FP事務所、金融系メディアへのアクセスが可能。FP相談サービスの紹介先として適切なチャネルを持つ。</li>
+            
+            <li>【専門知識】クレジットカード・消費者金融の実務経験から、借入管理・家計改善の知識を保有。FP相談の入口として「借入の見直し」から提案可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">金融系メディア運営者、保険代理店、FP事務所、家計相談サービス提供者</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+
+        <!-- 活用事例 -->
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> アフィリエイト案件。成果報酬型。</p>
+          
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">金融業界の人脈を活用し、保険代理店やFP事務所にアプローチ。カウンセリングセンターでの経験から「借入相談からFP相談へ」という顧客導線を提案。FP相談サービスの送客パートナーとして協業。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>消費者金融でのカウンセリング経験から、お金に悩む顧客の心理を理解。FP相談への橋渡しとして説得力のある提案が可能。※詳細は本人確認が必要。</p>
+          </div>
+        </div>
+        
+
+        <!-- 参照URL -->
+        
+      </article>
+      
+    </section>
+
+    <!-- セクション3: 販売戦略提案 -->
+    <section class="section strategy-section">
+      <h2 class="section-title">
+        <span class="section-number">3</span>
+        販売戦略提案
+      </h2>
+
+      
+      <!-- この人物に最適な販売スタイル -->
+      <div class="strategy-item">
+        <h4 class="product-detail-title">この人物に最適な販売スタイル</h4>
+        <p style="line-height: 1.8;">木曽氏はライフカード・アイフルという大手金融グループで部長職を歴任しており、組織的な営業推進と人脈活用型の営業スタイルが最適。Vプリカ事業での成功体験から、新しい金融商品・サービスの市場開拓にも適性がある。まずは金融業界での既存人脈を活用した紹介営業を軸に、段階的に活動範囲を広げていくスタイルを推奨。カウンセリングセンターでの経験から、顧客の課題に寄り添う「相談型営業」も得意と推定される。</p>
+      </div>
+
+      <!-- 注力すべきターゲット顧客 -->
+      <div class="strategy-item">
+        <h4 class="product-detail-title">注力すべきターゲット顧客</h4>
+        <p style="line-height: 1.8;">【第一ターゲット】金融系アフィリエイター・メディア運営者。クレジットカード・カードローンの紹介記事を作成しており、業界内部の知見を求めている層。木曽氏の実務経験に基づくアドバイスが差別化になる。【第二ターゲット】ECサイト運営者・オンラインサービス事業者。決済プラットフォーム導入を検討しており、Vプリカ時代の加盟店ネットワークからアプローチ可能。</p>
+      </div>
+
+      <!-- 初期の営業活動案 -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">初期の営業活動案</h4>
+        <ul class="steps-list">
+          
+          <li>【1週目】金融業界での人脈リストを作成。ライフカード・アイフル時代の同僚・取引先から、現在も連絡可能なキーパーソン20名を特定。</li>
+          
+          <li>【2週目】キーパーソン5名に個別連絡。近況報告を兼ねたオンライン面談を設定し、独立・副業への関心を伝える。</li>
+          
+          <li>【3週目】面談で業界動向の情報交換。金融商品のアフィリエイト・代理店ビジネスの現状を把握。紹介可能な案件や人脈を確認。</li>
+          
+          <li>【4週目】最も相性の良さそうな商材（決済プラットフォーム or カードローンアフィリエイト）を選定し、代理店契約またはアフィリエイト登録。</li>
+          
+          <li>【5-6週目】最初の営業活動を開始。Vプリカ時代の加盟店や金融メディアにアプローチし、商品紹介の機会を創出。</li>
+          
+          <li>【7-8週目】最初の成約を目指す。成功事例を作り、紹介営業の基盤を構築。</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- 成功シナリオ -->
+      
+      <div class="strategy-item success-scenario">
+        <h4 class="product-detail-title">成功シナリオ</h4>
+        <div class="scenario-content">
+          <p>【3ヶ月後】金融業界の人脈から5件の商談を実施、うち2件成約（アフィリエイト提携 or 代理店契約）。月額報酬20-30万円を確保。【6ヶ月後】決済プラットフォームの代理店として3社の導入を支援。金融系メディアとのアフィリエイト提携も拡大し、月額報酬50-80万円。【1年後】金融・決済領域の専門家として認知され、月額報酬100万円以上。セミナー登壇や執筆活動も開始。</p>
+        </div>
+      </div>
+      
+
+      <!-- 想定されるリスクと対策 -->
+      
+      <div class="strategy-item risk-factors">
+        <h4 class="product-detail-title">想定されるリスクと対策</h4>
+        <ul class="risk-list">
+          
+          <li>【リスク1】現職（アイフル）との競業避止義務 → 対策：契約内容を確認し、抵触しない範囲で活動。必要に応じて退職後に本格始動。</li>
+          
+          <li>【リスク2】金融業界以外への展開が難しい → 対策：まず金融・決済領域で実績を積み、段階的に隣接領域（EC、サブスク）へ拡大。</li>
+          
+          <li>【リスク3】アフィリエイト報酬が不安定 → 対策：代理店契約（継続報酬型）の商材を優先。複数の収入源を確保。</li>
+          
+          <li>【リスク4】業界内での評判リスク → 対策：責任ある金融商品の紹介を徹底。過度な勧誘を避け、顧客本位の提案を心がける。</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- 想定Q&A -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">想定されるハードルと対策</h4>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q1: なぜ金融商品のアフィリエイト・代理店をやろうと思ったのですか？</div>
+          <div class="qa-answer">A1: ライフカードでVプリカ事業を立ち上げ、アイフルで営業推進を担当してきた経験から、金融商品の価値を正しく伝えることの重要性を感じています。単なる紹介ではなく、顧客のニーズに合った商品を提案し、金融リテラシー向上にも貢献したいと考えています。</div>
+        </div>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q2: 競合（アイフル）出身ですが、なぜアコムを紹介するのですか？</div>
+          <div class="qa-answer">A2: 顧客にとって最適な選択肢を提案することが重要だと考えています。アイフルでの経験から業界全体を俯瞰できるようになり、各社の強み・特徴を中立的に説明できます。お客様の状況に合わせて、最適な商品をご紹介します。</div>
+        </div>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q3: 実績はありますか？</div>
+          <div class="qa-answer">A3: ライフカードではVプリカ事業の成長に貢献し、累計755万枚・424億円規模の発行実績があります。アイフルでは営業推進部長として全社の営業戦略を統括しました。独立後の実績はこれから積み上げますが、業界での10年以上の経験を活かしてご支援します。</div>
+        </div>
+        
+      </div>
+      
+
+      <!-- 次のアクション提案 -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">次のアクション提案</h4>
+        <p style="line-height: 1.8;">①ライフカード・アイフル時代の同僚・取引先リストを作成し、現在も連絡可能なキーパーソン20名を特定する　②競業避止義務の契約内容を確認し、副業・独立が可能な範囲を明確にする　③金融系アフィリエイトASPに登録し、取扱可能な商材を確認する</p>
+      </div>
+      
+
+      
+    </section>
+
+    <!-- フッター -->
+    <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem;" class="no-print">
+      <p>営業リサーチ自動化システム | 作成日: 2026年01月22日</p>
+    </footer>
+  </div>
+</body>
+</html>
