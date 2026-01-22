@@ -173,6 +173,34 @@
           "score": 24
         }
       ]
+    },
+    {
+      "id": "並木昴_楽天モバイル株式会社_20260122_141810",
+      "person_name": "並木昴",
+      "company_name": "楽天モバイル株式会社",
+      "created_at": "2026-01-22T14:18:15.222131",
+      "top_products": [
+        {
+          "name": "法人携帯",
+          "score": 19
+        },
+        {
+          "name": "法人WiFi",
+          "score": 18
+        },
+        {
+          "name": "BiZiMo光",
+          "score": 17
+        },
+        {
+          "name": "WiMAX",
+          "score": 17
+        },
+        {
+          "name": "テレWi-Fi",
+          "score": 15
+        }
+      ]
     }
   ]
 }
