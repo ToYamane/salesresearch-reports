@@ -565,6 +565,34 @@
           "score": 16
         }
       ]
+    },
+    {
+      "id": "井出智也_株式会社ハルエネ_20260127_152823",
+      "person_name": "井出智也",
+      "company_name": "株式会社ハルエネ",
+      "created_at": "2026-01-27T15:44:06.087271",
+      "top_products": [
+        {
+          "name": "HTBエナジー",
+          "score": 20
+        },
+        {
+          "name": "ストエネ",
+          "score": 18
+        },
+        {
+          "name": "電子ブレーカー",
+          "score": 17
+        },
+        {
+          "name": "BiZiMo光",
+          "score": 16
+        },
+        {
+          "name": "smartMEO",
+          "score": 14
+        }
+      ]
     }
   ]
 }
