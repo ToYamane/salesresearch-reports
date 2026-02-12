@@ -93,7 +93,7 @@
       const reportList = document.getElementById('reportList');
 
       try {
-        const response = await fetch('reports.json');
+        const response = await fetch('reports.json?t=' + Date.now());
         if (!response.ok) {
           throw new Error('レポート一覧の取得に失敗しました');
         }
