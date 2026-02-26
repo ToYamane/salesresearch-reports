@@ -1,0 +1,2478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>営業リサーチレポート - 結城耕造 様</title>
+  <style>/* 営業リサーチレポート - 共通CSS */
+
+/* CSS変数（テーマカラー） */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --success-light: #22c55e;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --bg-main: #f1f5f9;
+  --bg-card: #f8fafc;
+  --bg-white: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* レポートナビゲーション */
+.report-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+.report-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.report-nav a:hover {
+  background-color: #e0f2fe;
+  text-decoration: none;
+}
+
+/* リセット & ベース */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+}
+
+/* コンテナ */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* レポートヘッダー */
+.report-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.report-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.report-header .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.report-header .meta-item strong {
+  font-weight: 600;
+}
+
+/* ランキングサマリー */
+.ranking-summary {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.ranking-summary-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.ranking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border-left: 4px solid var(--border-medium);
+}
+
+.ranking-item:nth-child(1) { border-left-color: #f59e0b; background: #fffbeb; }
+.ranking-item:nth-child(2) { border-left-color: #9ca3af; background: #f9fafb; }
+.ranking-item:nth-child(3) { border-left-color: #d97706; background: #fff7ed; }
+
+.rank-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--border-light);
+  color: var(--text-secondary);
+}
+
+.rank-badge.rank-1 { background: #fef3c7; color: #b45309; }
+.rank-badge.rank-2 { background: #e5e7eb; color: #374151; }
+.rank-badge.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.rank-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rank-score {
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: var(--bg-white);
+}
+
+.rank-score.high { color: var(--success); }
+.rank-score.medium { color: #b45309; }
+.rank-score.low { color: var(--danger); }
+
+/* セクション */
+.section {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: 0.75rem;
+}
+
+/* サブセクション */
+.subsection {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: var(--bg-white);
+}
+
+.subsection:nth-child(odd) {
+  background: var(--bg-card);
+}
+
+.subsection:last-child {
+  margin-bottom: 0;
+}
+
+.subsection-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--primary);
+}
+
+/* 情報リスト */
+.info-list {
+  list-style: none;
+}
+
+.info-list li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.info-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.info-list .label {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.info-list .value {
+  font-weight: 500;
+  margin-left: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* 強みカード */
+.strengths-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, #e0f2fe 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.strengths-card p {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+/* 商材カード */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-card:last-child {
+  margin-bottom: 0;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-rank {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.product-rank.rank-1 { background: #fef3c7; color: #b45309; }
+.product-rank.rank-2 { background: #e5e7eb; color: #374151; }
+.product-rank.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* スコアバッジ */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.score-badge.high {
+  background: #dcfce7;
+  color: var(--success);
+}
+
+.score-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.score-badge.low {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+/* スコア内訳 */
+.score-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.score-item {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.score-item .score-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.score-item .score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.score-item .score-max {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 商材詳細 */
+.product-detail-section {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-detail-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.product-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.product-meta-item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-meta-item .label {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.product-meta-item .value {
+  font-weight: 500;
+}
+
+/* 理由リスト */
+.reason-list {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.reason-list li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.reason-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 販売戦略セクション */
+.strategy-section {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 1px solid #fde68a;
+}
+
+.strategy-item {
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.strategy-item:last-child {
+  margin-bottom: 0;
+}
+
+.steps-list {
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps-list li {
+  counter-increment: step;
+  padding: 0.75rem 0 0.75rem 2.5rem;
+  position: relative;
+  border-left: 2px solid var(--border-light);
+  margin-left: 0.75rem;
+}
+
+.steps-list li::before {
+  content: 'Step ' counter(step);
+  position: absolute;
+  left: -1rem;
+  top: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  background: var(--primary);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps-list li:last-child {
+  border-left-color: transparent;
+}
+
+/* Q&Aスタイル */
+.qa-item {
+  margin-bottom: 1rem;
+}
+
+.qa-item:last-child {
+  margin-bottom: 0;
+}
+
+.qa-question {
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  background: #fee2e2;
+  border-radius: 8px 8px 0 0;
+}
+
+.qa-answer {
+  padding: 0.75rem 1rem;
+  background: #dcfce7;
+  border-radius: 0 0 8px 8px;
+}
+
+/* リンク */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 一覧ページ用スタイル */
+.report-list-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.report-list-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-list-header p {
+  opacity: 0.9;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.report-list-card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.report-list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+}
+
+.report-list-card .person-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.report-list-card .company-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.report-list-card .report-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* 一覧カード内の商材リスト */
+.card-products {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  background: var(--bg-card);
+  border-radius: 6px;
+}
+
+.card-products-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.card-products-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card-product-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.25rem 0;
+  border-left: 3px solid var(--border-light);
+  padding-left: 0.5rem;
+}
+
+.card-product-item.rank-1 { border-left-color: #f59e0b; }
+.card-product-item.rank-2 { border-left-color: #9ca3af; }
+.card-product-item.rank-3 { border-left-color: #d97706; }
+
+.card-product-rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--border-light);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.card-product-item.rank-1 .card-product-rank { background: #fef3c7; color: #b45309; }
+.card-product-item.rank-2 .card-product-rank { background: #e5e7eb; color: #374151; }
+.card-product-item.rank-3 .card-product-rank { background: #fed7aa; color: #c2410c; }
+
+.card-product-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-product-score {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+/* 空状態 */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+}
+
+/* 参照URLリスト */
+.reference-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.reference-list li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.reference-list li::before {
+  content: '📄';
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+}
+
+.reference-list a {
+  color: var(--primary);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.reference-list a:hover {
+  text-decoration: underline;
+}
+
+/* 印刷用スタイル */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .report-header {
+    background: var(--primary) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-after: avoid;
+  }
+
+  .section {
+    box-shadow: none;
+    border: 1px solid var(--border-light);
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  .product-card {
+    page-break-inside: avoid;
+  }
+
+  .score-breakdown {
+    gap: 0.5rem;
+  }
+
+  a {
+    color: var(--text-primary);
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+}
+
+/* ===========================================
+   新セクション用スタイル（品質向上対応）
+   =========================================== */
+
+/* 職歴詳細スタイル */
+.work-history-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.work-history-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.work-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.work-company {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.work-period {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.work-role {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.work-achievements,
+.work-projects {
+  margin-top: 0.75rem;
+}
+
+.achievements-label,
+.projects-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.work-achievements ul,
+.work-projects ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.work-achievements li,
+.work-projects li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.work-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.work-projects li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.work-scope {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.scope-item {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: #e0f2fe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.no-data {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* 営業経験セクション */
+.sales-experience {
+  background: #f0fdf4 !important;
+}
+
+.sales-experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sales-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sales-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sales-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.sales-achievements,
+.sales-networks {
+  background: var(--bg-white);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+}
+
+.sales-achievements h4,
+.sales-networks h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.sales-achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sales-achievements li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.sales-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 人脈の質的評価 */
+.network-quality {
+  background: #e0f2fe !important;
+}
+
+.network-item {
+  margin-bottom: 1rem;
+}
+
+.network-item:last-child {
+  margin-bottom: 0;
+}
+
+.decision-maker-access {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.network-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.network-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.network-badge.high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.network-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.network-badge.low {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.network-item h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.positions-list,
+.speaking-list,
+.media-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.positions-list li,
+.speaking-list li,
+.media-list li {
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.positions-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.speaking-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--warning);
+  border-radius: 50%;
+}
+
+.media-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.influence {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.influence-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.influence-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* 起業志向セクション */
+.entrepreneurial {
+  background: #fef3c7 !important;
+}
+
+.readiness-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.readiness-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.readiness-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.readiness-badge.高 {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.readiness-badge.中 {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.readiness-badge.低 {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.entrepreneurial-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.entrepreneurial-item {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.ent-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.ent-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* この人だからこそ売れる理由 */
+.why-this-person {
+  background: #f0fdf4;
+  border-radius: 8px;
+  padding: 1rem !important;
+  margin-top: 1rem;
+}
+
+.why-this-person-content {
+  background: var(--bg-white);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+}
+
+.why-this-person-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* 成功シナリオ */
+.success-scenario {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+  border: 1px solid #86efac;
+}
+
+.scenario-content {
+  background: var(--bg-white);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+}
+
+.scenario-content p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* リスク要因 */
+.risk-factors {
+  background: #fff7ed !important;
+  border: 1px solid #fdba74;
+}
+
+.risk-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.risk-list li {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: var(--bg-white);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid var(--warning);
+}
+
+.risk-list li:last-child {
+  margin-bottom: 0;
+}
+
+.risk-list li::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 8px;
+  height: 8px;
+  background: var(--warning);
+  border-radius: 50%;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .report-header {
+    padding: 1.5rem;
+  }
+
+  .report-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .score-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .product-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .decision-maker-access {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .readiness-indicator {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entrepreneurial-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+/* ===========================================
+   情報取得スコア表示
+   =========================================== */
+
+/* 情報取得スコアカード */
+.info-score-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.info-score-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.info-score-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.info-score-value.high { color: #059669; }
+.info-score-value.medium { color: #d97706; }
+.info-score-value.low { color: #dc2626; }
+
+.info-score-bar {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.info-score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.info-score-description {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+</style>
+</head>
+<body>
+  <nav class="report-nav no-print">
+    <a href="../index.html">&larr; レポート一覧に戻る</a>
+  </nav>
+  <div class="container">
+    <!-- レポートヘッダー -->
+    <header class="report-header">
+      <h1>営業リサーチレポート</h1>
+      <div class="meta">
+        <div class="meta-item">
+          <span>対象:</span>
+          <strong>結城耕造 様 / 株式会社システムソフト</strong>
+        </div>
+        <div class="meta-item">
+          <span>作成日:</span>
+          <strong>2026年02月26日</strong>
+        </div>
+      </div>
+    </header>
+
+    <!-- ランキングサマリー -->
+    <section class="ranking-summary no-print">
+      <h2 class="ranking-summary-title">推奨商材 TOP5</h2>
+      <ol class="ranking-list">
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-1">1</span>
+          <span class="rank-name">デジタルレシピ</span>
+          <span class="rank-score medium">24/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-2">2</span>
+          <span class="rank-name">オーナーズブック</span>
+          <span class="rank-score medium">20/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-3">3</span>
+          <span class="rank-name">債権保証</span>
+          <span class="rank-score medium">19/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-4">4</span>
+          <span class="rank-name">前払いできるくん</span>
+          <span class="rank-score medium">19/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-5">5</span>
+          <span class="rank-name">スーモ売却</span>
+          <span class="rank-score medium">19/30</span>
+        </li>
+        
+      </ol>
+    </section>
+
+    <!-- セクション1: 人物プロファイル -->
+    <section class="section profile-section">
+      <h2 class="section-title">
+        <span class="section-number">1</span>
+        人物プロファイル
+      </h2>
+
+      <!-- 基本情報 -->
+      <div class="subsection">
+        <h3 class="subsection-title">基本情報</h3>
+
+        <!-- 情報取得スコア -->
+        
+        <div class="info-score-card">
+          <div class="info-score-header">
+            <span class="info-score-label">Web調査 情報取得度</span>
+            <span class="info-score-value high">
+              75/100
+            </span>
+          </div>
+          <div class="info-score-bar">
+            <div class="info-score-fill" style="width: 75%"></div>
+          </div>
+          <div class="info-score-description">
+            
+            十分な情報が取得できました
+            
+          </div>
+        </div>
+        
+
+        <ul class="info-list">
+          <li>
+            <span class="label">氏名:</span>
+            <span class="value">結城耕造</span>
+          </li>
+          <li>
+            <span class="label">会社名:</span>
+            <span class="value">株式会社システムソフト</span>
+          </li>
+          <li>
+            <span class="label">役職:</span>
+            <span class="value">代表取締役副社長</span>
+          </li>
+          <li>
+            <span class="label">現在のステータス:</span>
+            <span class="value">会社員（企業経営者）</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 経歴・専門性 -->
+      <div class="subsection">
+        <h3 class="subsection-title">経歴・専門性</h3>
+        
+        <div class="work-history-detail">
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">ジェフユナイテッド市原・千葉</span>
+              <span class="work-period">2002年〜2008年</span>
+            </div>
+            <div class="work-role">プロサッカー選手（DF） / 6年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>ナビスコカップ優勝2回（2005年、2006年）</li>
+                
+                <li>通算47試合1得点</li>
+                
+              </ul>
+            </div>
+            
+            
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">サンフレッチェ広島</span>
+              <span class="work-period">2008年</span>
+            </div>
+            <div class="work-role">プロサッカー選手（DF・期限付き移籍） / 1年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>J2優勝・J1昇格に貢献</li>
+                
+                <li>19試合出場</li>
+                
+              </ul>
+            </div>
+            
+            
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">フォルトゥナ・デュッセルドルフ（ドイツ2部）</span>
+              <span class="work-period">2009年〜2010年</span>
+            </div>
+            <div class="work-role">プロサッカー選手（DF） / 1年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>海外リーグでのプレー経験</li>
+                
+              </ul>
+            </div>
+            
+            
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">APAMAN株式会社</span>
+              <span class="work-period">2018年〜2020年</span>
+            </div>
+            <div class="work-role">社員 / 2年</div>
+            
+            
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">ecobike株式会社</span>
+              <span class="work-period">2020年〜</span>
+            </div>
+            <div class="work-role">代表取締役社長 / 2年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>シェアサイクル事業の経営</li>
+                
+              </ul>
+            </div>
+            
+            
+            <div class="work-scope">
+              
+              <span class="scope-item">代表取締役として経営全般</span>
+            </div>
+            
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">株式会社システムソフト</span>
+              <span class="work-period">2021年〜現在</span>
+            </div>
+            <div class="work-role">代表取締役副社長 / 5年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>SSAP事業部本部長</li>
+                
+                <li>fabbit事業部本部長</li>
+                
+                <li>東証スタンダード上場企業の経営</li>
+                
+              </ul>
+            </div>
+            
+            
+            <div class="work-scope">
+              
+              <span class="scope-item">副社長として経営全般を統括</span>
+            </div>
+            
+            
+            <div class="work-projects">
+              <span class="projects-label">主要プロジェクト:</span>
+              <ul>
+                
+                <li>SSAP（アスリートセカンドキャリア支援）事業</li>
+                
+                <li>fabbit（コワーキングスペース）事業</li>
+                
+              </ul>
+            </div>
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">SS Technologies株式会社</span>
+              <span class="work-period">2021年〜現在</span>
+            </div>
+            <div class="work-role">代表取締役社長 / 5年</div>
+            
+            
+            <div class="work-scope">
+              
+              <span class="scope-item">代表取締役として経営全般</span>
+            </div>
+            
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">アビスパ福岡株式会社</span>
+              <span class="work-period">2024年4月〜2026年1月</span>
+            </div>
+            <div class="work-role">代表取締役社長 / 2年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>J1クラブの経営</li>
+                
+                <li>2026年1月に引責辞任</li>
+                
+              </ul>
+            </div>
+            
+            
+            
+          </div>
+          
+        </div>
+        
+        <ul class="info-list" style="margin-top: 1rem;">
+          <li>
+            <span class="label">専門知識領域:</span>
+            <span class="value">経営管理, IT・ソフトウェア, スポーツビジネス, 不動産, シェアリングエコノミー, コワーキングスペース事業</span>
+          </li>
+          <li>
+            <span class="label">保有資格:</span>
+            <span class="value">なし</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 営業・ビジネス開発経験 -->
+      
+
+      <!-- 人脈・ネットワーク -->
+      <div class="subsection">
+        <h3 class="subsection-title">人脈・ネットワーク</h3>
+        <ul class="info-list">
+          <li>
+            <span class="label">人脈のある業界:</span>
+            <span class="value">IT, 不動産, スポーツ, モビリティ</span>
+          </li>
+          <li>
+            <span class="label">ネットワーク規模:</span>
+            <span class="value">経営者レベルの広範な人脈</span>
+          </li>
+          <li>
+            <span class="label">発見したアカウント:</span>
+            <span class="value">
+              
+                なし
+              
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 人脈の質的評価 -->
+      
+      <div class="subsection network-quality">
+        <h3 class="subsection-title">人脈・影響力の詳細</h3>
+        
+        <div class="network-item decision-maker-access">
+          <span class="network-label">決裁者へのアクセス度:</span>
+          <span class="network-badge high">
+            高（複数企業の代表取締役経験、J1クラブ社長経験から経営層への直接アクセスが可能）
+          </span>
+        </div>
+        
+        
+        <div class="network-item">
+          <h4>業界での立ち位置</h4>
+          <ul class="positions-list">
+            
+            <li>アビスパ福岡 代表取締役社長（2024-2026）</li>
+            
+            <li>SS Technologies 代表取締役社長</li>
+            
+            <li>ecobike 代表取締役社長</li>
+            
+          </ul>
+        </div>
+        
+        
+        
+        <div class="network-item">
+          <h4>メディア露出</h4>
+          <ul class="media-list">
+            
+            <li>J1アビスパ福岡社長就任・辞任に関する多数のメディア報道</li>
+            
+            <li>元プロサッカー選手としてのスポーツメディア露出</li>
+            
+          </ul>
+        </div>
+        
+        
+        <div class="network-item influence">
+          <span class="influence-label">影響力指標:</span>
+          <span class="influence-value">元Jリーガーとしての知名度、J1クラブ社長経験による経営者ネットワーク</span>
+        </div>
+        
+      </div>
+      
+
+      <!-- 起業・独立志向 -->
+      
+      <div class="subsection entrepreneurial">
+        <h3 class="subsection-title">起業・独立志向</h3>
+        
+        <div class="readiness-indicator">
+          <span class="readiness-label">独立準備度:</span>
+          
+          
+          <span class="readiness-badge 低">
+            低
+          </span>
+        </div>
+        
+        <div class="entrepreneurial-details">
+          
+          
+          
+          
+        </div>
+      </div>
+      
+
+      <!-- 参照URL -->
+      
+
+      <!-- この人物の強み -->
+      
+      <div class="subsection">
+        <h3 class="subsection-title">この人物の強み</h3>
+        <div class="strengths-card">
+          <p>元プロサッカー選手（Jリーグ・ドイツ2部）から早稲田大学MBA取得を経てビジネスキャリアに転身。APAMAN・システムソフトグループで複数企業の代表取締役を歴任し、IT・不動産・モビリティ・スポーツ経営と幅広い業界での経営経験を持つ。J1アビスパ福岡の社長も務め、経営者レベルの人脈が広い。アスリートのセカンドキャリア支援事業（SSAP）の経験から、スポーツ×ビジネスの橋渡し役としての強みがある。</p>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- セクション2: 推奨商材 -->
+    <section class="section products-section">
+      <h2 class="section-title">
+        <span class="section-number">2</span>
+        推奨商材（上位5件）
+      </h2>
+
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-1">第1位</span>
+          <span class="product-name">デジタルレシピ</span>
+          <span class="score-badge medium">
+            24/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">9<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">㈱デジタルレシピ</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">生成AI/DX支援・AIプロダクト</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">業務効率化・DX</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">企業・個人事業主</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">生成AIの社会実装を推進し、AIコンサル/オートメーションやAIライティング等のプロダクトを展開</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】IT・ソフトウェア企業（システムソフト・SS Technologies）の代表取締役を長年務め、DX・IT活用を経営課題として実際に推進してきた。SSAP（アスリートセカンドキャリア支援）やfabbit（コワーキングスペース）などテクノロジーを活用した新規事業開発の経験もあり、生成AI・DX支援商材の文脈と高い親和性がある。</li>
+            
+            <li>【人脈マッチ】IT業界・スポーツビジネス・不動産・モビリティと横断的な経営者ネットワークを保有し、DX化を検討している多業界の意思決定者に直接アクセスできる。J1クラブ社長経験からスポーツ業界のDX推進ニーズへのリーチも可能。fabbitのコワーキング利用企業群はDX支援の有望ターゲット層。</li>
+            
+            <li>【専門知識】IT企業の経営トップとしてシステム開発・デジタル活用の意思決定を行ってきた経験から、生成AI導入のビジネスインパクトを経営者目線で説明できる。DX推進の課題（人材・コスト・文化変革）への理解が深く、顧客の懸念に的確に応えられる。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">IT・スポーツビジネス・不動産・モビリティ業界の中堅〜大手企業経営者・DX推進担当役員。特にfabbitコワーキング利用企業や、SSAP関連のスポーツ団体・企業でDX化に取り組む組織。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://dxr.co.jp/" target="_blank" rel="noopener noreferrer">https://dxr.co.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 公式サイトには代理店制度の詳細非公開。直接問い合わせが必要。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>KDDI - AI技術による社内業務効率化</li>
+            
+            <li>JFEエンジニアリング - 生成AIを活用した文書・現場画像検索システム</li>
+            
+            <li>北海道上川町 - 窓口業務効率化</li>
+            
+            <li>防衛事業 - ディフェンステックで20億円受注</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">「IT企業経営者として自らDXを推進してきた経験者が語る生成AIの実践的活用法」という立ち位置でアプローチ。経営者向けの小規模勉強会・セミナーをfabbitやSSAPのネットワークを活用して開催し、リードを獲得。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>IT企業トップとして実際にデジタル活用・新規事業開発を推進してきた経験から、生成AI・DX支援の価値を経営者目線で説得力を持って伝えられる。多業界にわたる経営者ネットワークから多様な業種の顧客開拓が可能。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-2">第2位</span>
+          <span class="product-name">オーナーズブック</span>
+          <span class="score-badge medium">
+            20/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">アフィリエイト</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">不動産クラウドファンディング</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">資産・家計</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">個人投資家</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">不動産特化型クラウドファンディング。少額から堅実に不動産投資に参加する機会を提供。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】APAMAN株式会社での不動産業務経験があり、不動産業界の基礎知識と実務感覚を保有。ecobike代表時代のシェアリングエコノミー経営経験も不動産クラウドファンディングの仕組み理解に親和性がある。</li>
+            
+            <li>【人脈マッチ】複数企業の代表取締役経験から経営者・投資家層へのアクセスは高い。J1クラブ社長経験によるスポーツビジネス界の経営者人脈も個人投資家候補として有効。</li>
+            
+            <li>【専門知識】APAMAN勤務時の不動産知識に加え、fabbit（コワーキングスペース）事業での不動産運用経験がある。経営者としての投資判断眼は高い。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">経営者層で余剰資金の安定運用先を探している個人投資家。SSAP事業を通じて接触した高収入の元アスリート。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://www.ownersbook.jp/" target="_blank" rel="noopener noreferrer">https://www.ownersbook.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 紹介制度・アフィリエイト制度なし（2026年2月現在）。過去に友達紹介キャンペーンがあったが現在は廃止。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>累計投資額600億円突破</li>
+            
+            <li>会員数35,000名以上</li>
+            
+            <li>デフォルト0件</li>
+            
+            <li>平均予定利回り4.68%</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">SSAP事業での元アスリートとのコネクションを活用し、「少額から始められる堅実な不動産投資」として提案。経営者交流会やスポーツビジネスイベントでの人脈活用が有効。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>元プロサッカー選手かつ複数企業代表取締役という独自のキャリアにより、スポーツ界と経営者コミュニティの両方に人脈を持つ。SSAP事業で元アスリートのセカンドキャリア支援を行っている立場から、資産形成の選択肢として自然な形で紹介できる。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-3">第3位</span>
+          <span class="product-name">債権保証</span>
+          <span class="score-badge medium">
+            19/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">5<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">アラームボックス㈱</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">売掛保証/与信管理</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">経営基盤・リスク管理</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">法人（B2B取引を行う企業）</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">取引先の倒産リスクを保証するサービス。Web上で審査・保証申込が完結。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】複数企業の代表取締役・社長として、B2B取引における与信管理・売掛リスクの経営判断を実際に行ってきた経験がある。IT企業・不動産・スポーツクラブ経営での資金繰り・取引リスクへの感度は高い。</li>
+            
+            <li>【人脈マッチ】経営者・代表取締役レベルの人脈が広く、B2B取引を行う企業のトップに直接リーチできる。スタートアップ・中堅企業の経営者コミュニティへのアクセスも期待できる。</li>
+            
+            <li>【専門知識】経営者として売掛管理・取引先の信用リスクを実務で扱ってきた経験から、商材の価値（倒産リスク回避・キャッシュフロー安定）を自分ごととして語れる。MBAの経営知識も与信管理の文脈で活きる。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">B2B取引を行うIT・不動産・スポーツ関連の中小〜中堅企業経営者。特に新規取引先の開拓期や成長フェーズにあり、売掛リスクに悩む経営者。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 代理店制度あり（紹介代理店形態）。専門知識不要で参入可能。WEB面談→契約→勉強会の流れ。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>5,000社以上の導入実績</li>
+            
+            <li>継続率95%以上</li>
+            
+            <li>株式会社ヤギ - 統一プラットフォームへ移行</li>
+            
+            <li>株式会社日新 - 与信管理とコンプライアンス体制強化</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">「私自身も経営者として取引先の倒産リスクに悩んだ経験がある」という実体験を起点に、経営者同士の共感ベースで商談に入る。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>複数企業のトップとして実際にB2B取引リスクに向き合ってきた経験から、顧客の課題を自分ごととして説得力を持って語れる。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-4">第4位</span>
+          <span class="product-name">前払いできるくん</span>
+          <span class="score-badge medium">
+            19/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">㈱Payment Technology</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">給与前払い/福利厚生SaaS</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">人材・組織強化</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">企業（人事・総務）/従業員</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">従業員が必要なタイミングで給与の一部を受け取る前払いサービス。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】IT・SaaS分野での副社長・社長経験があり、企業向けHRテック商材の文脈を理解している。fabbit事業でテナント企業の人事・労務ニーズと接点があった。</li>
+            
+            <li>【人脈マッチ】複数企業の代表取締役を歴任しており、中小〜中堅企業の経営者・人事責任者層への人脈は厚い。アビスパ福岡社長経験からスポーツ業界の法人意思決定者にもリーチ可能。</li>
+            
+            <li>【専門知識】企業経営者として従業員の福利厚生・採用・定着の重要性は理解しているが、給与前払いサービス特有の仕組みに関する専門知識は薄い。経営目線で価値を語ることはできる。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">中小〜中堅企業（従業員50〜500名）の経営者・人事部長。IT業界、スポーツ・エンタメ業界、コワーキングスペース利用企業。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://pay-tech.co.jp/" target="_blank" rel="noopener noreferrer">https://pay-tech.co.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 情報なし（要確認）</p>
+          
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">経営者同士の対話を起点に「採用・定着コストの削減」という経営課題として提案。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>複数社の経営トップとして人材確保・定着に直面してきた実体験があり、「経営者が経営者に語る」信頼感で提案できる。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-5">第5位</span>
+          <span class="product-name">スーモ売却</span>
+          <span class="score-badge medium">
+            19/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">アフィリエイト</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">不動産売却査定</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">資産・家計</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">不動産売却検討者</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">SUUMOの不動産売却の一括査定サービス。売却の基礎情報提供に加え、査定依頼や売却案内への導線を設計。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】APAMAN株式会社での不動産実務経験があり、不動産売却・査定の業界構造を理解している。スーモという知名度の高いブランドを扱うため、商材説明の敷居も低い。</li>
+            
+            <li>【人脈マッチ】複数社の代表取締役経験・Jリーグクラブ社長経験により、資産を保有する経営者・元スポーツ選手コミュニティへのアクセスが良好。SUUMOブランドは信頼性も高く紹介しやすい。</li>
+            
+            <li>【専門知識】不動産査定プロセス・一括査定の仕組みについてAPAMAN勤務時の知識が活かせる。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">不動産の売却を検討している経営者・高所得層・元スポーツ選手・IT業界関係者。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://suumo.jp/baikyaku/" target="_blank" rel="noopener noreferrer">https://suumo.jp/baikyaku/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 情報なし（アフィリエイト型）</p>
+          
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">経営者コミュニティ・元アスリートネットワークを通じた紹介営業。「不動産売却を考えたらまず複数社で査定比較を」という実用的なアドバイスを軸に、信頼ベースで案内。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>SUUMOという圧倒的なブランド認知度により会話に乗せやすい。経営者・元プロスポーツ選手という人脈の質が、高価値不動産を保有するターゲット層と自然に合致。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+    </section>
+
+    <!-- セクション3: 販売戦略提案 -->
+    <section class="section strategy-section">
+      <h2 class="section-title">
+        <span class="section-number">3</span>
+        販売戦略提案
+      </h2>
+
+      
+      <!-- この人物に最適な販売スタイル -->
+      <div class="strategy-item">
+        <h4 class="product-detail-title">この人物に最適な販売スタイル</h4>
+        <p style="line-height: 1.8;">結城氏は元プロサッカー選手から早稲田MBA取得を経て複数企業の代表取締役を歴任してきた異色のキャリアの持ち主であり、経営者同士の信頼ベースでの紹介・コンサルティング営業が最適。一度構築した信頼関係を軸に、複数商材をクロスセルしていくスタイルが向いている。fabbitコワーキングスペースやSSAPアスリート支援事業を通じた接点を入口に、経営課題の相談に乗る形で商材提案を行うアプローチが効果的。</p>
+      </div>
+
+      <!-- 注力すべきターゲット顧客 -->
+      <div class="strategy-item">
+        <h4 class="product-detail-title">注力すべきターゲット顧客</h4>
+        <p style="line-height: 1.8;">【第一ターゲット】IT・スポーツ・不動産業界の中堅企業経営者（年商5-50億円）で、DX推進・与信管理・人材定着に課題を感じている層。結城氏のIT企業経営経験と業界横断的な人脈が直接活きる。【第二ターゲット】元プロスポーツ選手・アスリートOBで独立・資産運用を検討している層。SSAP事業を通じた接点が強み。</p>
+      </div>
+
+      <!-- 初期の営業活動案 -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">初期の営業活動案</h4>
+        <ul class="steps-list">
+          
+          <li>【1週目】fabbitコワーキングスペース利用企業・SSAP関連の経営者人脈リストを作成し、DX/与信/人材定着の課題を持ちそうなキーパーソン20名を特定</li>
+          
+          <li>【2週目】キーパーソン5名に個別連絡。「経営課題の意見交換」という形でオンライン面談を設定</li>
+          
+          <li>【3週目】面談で課題ヒアリング。デジタルレシピ（AI/DX）・債権保証・前払いできるくんの中から課題にマッチする商材を特定</li>
+          
+          <li>【4週目】課題に合致した商材の資料を準備し、具体的な提案を実施。デジタルレシピについてはfabbitでの小規模AI活用セミナーの企画も検討</li>
+          
+          <li>【5-6週目】最初の提案に対するフィードバックを得て調整。債権保証は紹介代理店として正式登録</li>
+          
+          <li>【7-8週目】最初の成約を目指す。成功事例を作り、経営者仲間への紹介依頼を開始</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- 成功シナリオ -->
+      
+      <div class="strategy-item success-scenario">
+        <h4 class="product-detail-title">成功シナリオ</h4>
+        <div class="scenario-content">
+          <p>【3ヶ月後】fabbit・SSAP人脈から5件の商談を実施、うちデジタルレシピ1件・債権保証1件の成約。月額報酬20-30万円を確保。【6ヶ月後】成功事例を活用した紹介営業が軌道に乗り、月間8件の新規商談。デジタルレシピの経営者向けAI活用セミナーが好評で集客チャネルとして機能。月額報酬60-80万円。【1年後】IT・スポーツ・不動産業界での「DX×経営」の専門家としてのブランディングが確立。安定した顧客基盤から月額報酬120万円以上。</p>
+        </div>
+      </div>
+      
+
+      <!-- 想定されるリスクと対策 -->
+      
+      <div class="strategy-item risk-factors">
+        <h4 class="product-detail-title">想定されるリスクと対策</h4>
+        <ul class="risk-list">
+          
+          <li>【リスク1】デジタルレシピの代理店制度が非公開 → 対策：直接問い合わせて条件を確認。制度がない場合はコンサルティング契約での連携を打診</li>
+          
+          <li>【リスク2】現職（システムソフト副社長）との利益相反 → 対策：まずは社内承認を得る。SSAP事業の延長線上として位置づけることで整合性を確保</li>
+          
+          <li>【リスク3】営業経験がないため商談クロージングに課題 → 対策：債権保証（アラームボックス）の勉強会を活用してセールススキルを習得。最初はコンサルティング型の提案に徹し、クロージングは商材提供元と連携</li>
+          
+          <li>【リスク4】アビスパ福岡社長辞任のレピュテーションリスク → 対策：辞任理由を正直に説明しつつ、その経験から学んだガバナンスの重要性を逆に強みとして語る</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- 想定Q&A -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">想定されるハードルと対策</h4>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q1: なぜこの商材を選んだのですか？</div>
+          <div class="qa-answer">A1: 私自身がIT企業の経営者として、DX推進や取引先リスク管理、人材定着に日々向き合ってきました。その実体験から、これらの商材が経営者の課題解決に本当に有効だと確信しています。</div>
+        </div>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q2: 営業経験がないのでは？</div>
+          <div class="qa-answer">A2: おっしゃる通り、いわゆる営業職の経験はありません。しかし複数企業の経営トップとして、パートナー開拓・事業提携の交渉は数多く行ってきました。「売る」のではなく「経営課題を一緒に解決する」というスタンスで取り組みます。</div>
+        </div>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q3: 実績はありますか？</div>
+          <div class="qa-answer">A3: 独立後の営業実績はこれからですが、IT企業経営5年・J1クラブ社長・MBA取得という経験があります。商材自体もデジタルレシピはKDDI・JFEエンジニアリングへの導入実績、債権保証は5,000社以上の導入と95%の継続率があり、自信を持ってお勧めできます。</div>
+        </div>
+        
+      </div>
+      
+
+      <!-- 次のアクション提案 -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">次のアクション提案</h4>
+        <p style="line-height: 1.8;">①デジタルレシピ（㈱デジタルレシピ）にパートナー制度について直接問い合わせる　②アラームボックス（債権保証）の紹介代理店に正式申込する　③fabbitコワーキング利用企業リストからDX関心層5名をピックアップし、面談をセッティングする</p>
+      </div>
+      
+
+      
+    </section>
+
+    <!-- フッター -->
+    <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem;" class="no-print">
+      <p>営業リサーチ自動化システム | 作成日: 2026年02月26日</p>
+    </footer>
+  </div>
+</body>
+</html>

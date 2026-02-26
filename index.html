@@ -32,8 +32,23 @@
     }
     .filter-bar {
       max-width: 1200px;
-      margin: 0 auto 1.5rem;
+      margin: 0 auto 1rem;
       padding: 0 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-bar .search-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    .filter-bar label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
     }
     .filter-bar input {
       width: 100%;
@@ -47,6 +62,23 @@
       outline: none;
       border-color: var(--primary);
     }
+    .filter-bar .sort-group {
+      min-width: 160px;
+    }
+    .filter-bar select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border-light);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: var(--bg-white);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .filter-bar select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
     .report-count {
       max-width: 1200px;
       margin: 0 auto;
@@ -54,6 +86,38 @@
       font-size: 0.9rem;
       color: var(--text-secondary);
       margin-bottom: 1rem;
+    }
+    .pagination {
+      max-width: 1200px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .pagination button {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--border-light);
+      border-radius: 8px;
+      background: var(--bg-white);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pagination button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .pagination button.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -64,21 +128,38 @@
     <p>生成されたレポートの履歴を閲覧できます</p>
   </header>
 
-  <!-- 検索フィルター -->
+  <!-- 検索フィルター & ソート -->
   <div class="filter-bar">
-    <input type="text" id="searchInput" placeholder="人物名や会社名で検索..." oninput="filterReports()">
+    <div class="search-group">
+      <label for="searchInput">検索</label>
+      <input type="text" id="searchInput" placeholder="人物名・会社名・商材名で検索..." oninput="filterReports()">
+    </div>
+    <div class="sort-group">
+      <label for="sortSelect">並び替え</label>
+      <select id="sortSelect" onchange="sortReports()">
+        <option value="date-desc">日付（新しい順）</option>
+        <option value="date-asc">日付（古い順）</option>
+        <option value="name-asc">名前順（A→Z）</option>
+        <option value="name-desc">名前順（Z→A）</option>
+        <option value="score-desc">スコア順（高→低）</option>
+        <option value="score-asc">スコア順（低→高）</option>
+      </select>
+    </div>
   </div>
 
   <!-- レポート件数 -->
-  <div class="report-count" id="reportCount"></div>
+  <div class="report-count" id="reportCount" aria-live="polite"></div>
 
   <!-- レポート一覧 -->
   <main id="reportList" class="report-grid">
-    <div class="loading">
+    <div class="loading" role="status" aria-label="読み込み中">
       <div class="loading-spinner"></div>
       <p>レポート一覧を読み込み中...</p>
     </div>
   </main>
+
+  <!-- ページネーション -->
+  <div class="pagination" id="pagination" aria-label="ページナビゲーション"></div>
 
   <!-- フッター -->
   <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem;">
@@ -87,6 +168,9 @@
 
   <script>
     let allReports = [];
+    let filteredReports = [];
+    const ITEMS_PER_PAGE = 20;
+    let currentPage = 1;
 
     // レポート一覧を取得
     async function loadReports() {
@@ -101,16 +185,19 @@
         const data = await response.json();
         allReports = data.reports || [];
 
-        // 日付の新しい順にソート
+        // デフォルトソート（日付の新しい順）
         allReports.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-        renderReports(allReports);
+        filteredReports = allReports;
+        currentPage = 1;
+        renderPage(currentPage);
       } catch (error) {
         console.error('Error loading reports:', error);
         reportList.innerHTML = `
-          <div class="empty-state" style="grid-column: 1 / -1;">
-            <p>レポートがまだありません。</p>
+          <div class="error-state" style="grid-column: 1 / -1;">
+            <p>通信エラーが発生しました。</p>
             <p style="font-size: 0.9rem; margin-top: 0.5rem; color: var(--text-muted);">
+              レポートがまだないか、通信に問題がある可能性があります。<br>
               /research コマンドでレポートを生成してください。
             </p>
           </div>
@@ -119,17 +206,71 @@
       }
     }
 
+    // ソート実行
+    function sortReports() {
+      const sortValue = document.getElementById('sortSelect').value;
+
+      filteredReports.sort((a, b) => {
+        switch (sortValue) {
+          case 'date-desc':
+            return new Date(b.created_at) - new Date(a.created_at);
+          case 'date-asc':
+            return new Date(a.created_at) - new Date(b.created_at);
+          case 'name-asc':
+            return (a.person_name || '').localeCompare(b.person_name || '', 'ja');
+          case 'name-desc':
+            return (b.person_name || '').localeCompare(a.person_name || '', 'ja');
+          case 'score-desc': {
+            const scoreA = getTopScore(a);
+            const scoreB = getTopScore(b);
+            return scoreB - scoreA;
+          }
+          case 'score-asc': {
+            const scoreA2 = getTopScore(a);
+            const scoreB2 = getTopScore(b);
+            return scoreA2 - scoreB2;
+          }
+          default:
+            return 0;
+        }
+      });
+
+      currentPage = 1;
+      renderPage(currentPage);
+    }
+
+    // 最高スコアを取得
+    function getTopScore(report) {
+      if (report.top_products && report.top_products.length > 0) {
+        return Math.max(...report.top_products.map(p => p.score || 0));
+      }
+      return 0;
+    }
+
+    // 指定ページを描画
+    function renderPage(page) {
+      const totalPages = Math.ceil(filteredReports.length / ITEMS_PER_PAGE);
+      currentPage = Math.max(1, Math.min(page, totalPages || 1));
+
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+      const pageReports = filteredReports.slice(start, end);
+
+      renderReports(pageReports);
+      renderPagination(totalPages);
+      updateCount(filteredReports.length);
+    }
+
     // レポートを描画
     function renderReports(reports) {
       const reportList = document.getElementById('reportList');
 
-      if (reports.length === 0) {
+      if (reports.length === 0 && filteredReports.length === 0) {
         reportList.innerHTML = `
           <div class="empty-state" style="grid-column: 1 / -1;">
             <p>該当するレポートが見つかりません。</p>
           </div>
         `;
-        updateCount(0);
         return;
       }
 
@@ -175,21 +316,54 @@
           </a>
         `;
       }).join('');
-
-      updateCount(reports.length);
     }
 
-    // 検索フィルター
+    // ページネーション描画
+    function renderPagination(totalPages) {
+      const pagination = document.getElementById('pagination');
+
+      if (totalPages <= 1) {
+        pagination.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+
+      // 前へボタン
+      html += `<button ${currentPage === 1 ? 'disabled' : ''} onclick="renderPage(${currentPage - 1})">&laquo; 前へ</button>`;
+
+      // ページ番号
+      for (let i = 1; i <= totalPages; i++) {
+        if (totalPages <= 7 || i === 1 || i === totalPages || Math.abs(i - currentPage) <= 1) {
+          html += `<button class="${i === currentPage ? 'active' : ''}" onclick="renderPage(${i})">${i}</button>`;
+        } else if (i === currentPage - 2 || i === currentPage + 2) {
+          html += `<button disabled>...</button>`;
+        }
+      }
+
+      // 次へボタン
+      html += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="renderPage(${currentPage + 1})">次へ &raquo;</button>`;
+
+      pagination.innerHTML = html;
+    }
+
+    // 検索フィルター（商材名も検索対象に含む）
     function filterReports() {
       const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 
-      const filtered = allReports.filter(report => {
+      filteredReports = allReports.filter(report => {
         const personName = (report.person_name || '').toLowerCase();
         const companyName = (report.company_name || '').toLowerCase();
-        return personName.includes(searchTerm) || companyName.includes(searchTerm);
+        // 商材名も検索対象に含む
+        let productNames = '';
+        if (report.top_products) {
+          productNames = report.top_products.map(p => (p.name || '').toLowerCase()).join(' ');
+        }
+        return personName.includes(searchTerm) || companyName.includes(searchTerm) || productNames.includes(searchTerm);
       });
 
-      renderReports(filtered);
+      // 現在のソートを維持
+      sortReports();
     }
 
     // 件数を更新
