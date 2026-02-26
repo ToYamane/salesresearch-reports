@@ -285,133 +285,532 @@
       "person_name": "平澤沙織",
       "company_name": "みずほ証券株式会社",
       "created_at": "2026-02-26T14:14:31.095050",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "アメックスクレジットカード",
+          "score": 21
+        },
+        {
+          "name": "顧問バンク",
+          "score": 16
+        },
+        {
+          "name": "メディケア生命保険",
+          "score": 15
+        },
+        {
+          "name": "決済プラットフォーム",
+          "score": 13
+        },
+        {
+          "name": "E-STAMP",
+          "score": 10
+        }
+      ]
     },
     {
       "id": "長谷川雄大_天馬株式会社_20260226_124343",
       "person_name": "長谷川雄大",
       "company_name": "天馬株式会社",
       "created_at": "2026-02-26T14:14:31.140433",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "E-STAMP",
+          "score": 20
+        },
+        {
+          "name": "顧問バンク",
+          "score": 18
+        },
+        {
+          "name": "研修サービス",
+          "score": 15
+        },
+        {
+          "name": "前払いできるくん",
+          "score": 14
+        },
+        {
+          "name": "電子ブレーカー",
+          "score": 14
+        }
+      ]
     },
     {
       "id": "谷口政一郎_株式会社プレミアムウォーターホールディングス_20260226_124540",
       "person_name": "谷口政一郎",
       "company_name": "株式会社プレミアムウォーターホールディングス",
       "created_at": "2026-02-26T14:14:31.175234",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "BiZiMo光",
+          "score": 25
+        },
+        {
+          "name": "法人携帯",
+          "score": 25
+        },
+        {
+          "name": "WiMAX",
+          "score": 22
+        },
+        {
+          "name": "顧問バンク",
+          "score": 21
+        },
+        {
+          "name": "テレWi-Fi",
+          "score": 21
+        }
+      ]
     },
     {
       "id": "河口清華_ビッグローブ株式会社_20260226_124438",
       "person_name": "河口清華",
       "company_name": "ビッグローブ株式会社",
       "created_at": "2026-02-26T14:14:31.208747",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "BiZiMo光",
+          "score": 25
+        },
+        {
+          "name": "法人携帯",
+          "score": 23
+        },
+        {
+          "name": "デジタルレシピ",
+          "score": 20
+        },
+        {
+          "name": "BiZiMoWiFi",
+          "score": 23
+        },
+        {
+          "name": "研修サービス",
+          "score": 19
+        }
+      ]
     },
     {
       "id": "山本直道_株式会社at'_Sense_20260226_124910",
       "person_name": "山本直道",
       "company_name": "株式会社at'_Sense",
       "created_at": "2026-02-26T14:14:31.258588",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "BiZiMo光",
+          "score": 28
+        },
+        {
+          "name": "HTBエナジー",
+          "score": 25
+        },
+        {
+          "name": "ハルエネ（ハルとくでんき）",
+          "score": 26
+        },
+        {
+          "name": "Biglobe光",
+          "score": 27
+        },
+        {
+          "name": "法人携帯（法人携帯スマホコム）",
+          "score": 23
+        }
+      ]
     },
     {
       "id": "並木昴_楽天モバイル株式会社_20260226_124857",
       "person_name": "並木昴",
       "company_name": "楽天モバイル株式会社",
       "created_at": "2026-02-26T14:14:31.303872",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "BiZiMo光",
+          "score": 25
+        },
+        {
+          "name": "法人携帯",
+          "score": 24
+        },
+        {
+          "name": "WiMAX",
+          "score": 22
+        },
+        {
+          "name": "決済プラットフォーム",
+          "score": 20
+        },
+        {
+          "name": "デジタルレシピ",
+          "score": 19
+        }
+      ]
     },
     {
       "id": "木曽祥人_ライフカード株式会社_20260226_125103",
       "person_name": "木曽祥人",
       "company_name": "ライフカード株式会社",
       "created_at": "2026-02-26T14:14:31.341678",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "決済プラットフォーム",
+          "score": 27
+        },
+        {
+          "name": "アメックスクレジットカード",
+          "score": 26
+        },
+        {
+          "name": "E-STAMP",
+          "score": 20
+        },
+        {
+          "name": "顧問バンク",
+          "score": 22
+        },
+        {
+          "name": "研修サービス",
+          "score": 18
+        }
+      ]
     },
     {
       "id": "白板綾_株式会社ムダカラ_20260226_141219",
       "person_name": "白板綾",
       "company_name": "株式会社ムダカラ",
       "created_at": "2026-02-26T14:14:31.342600",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "㈱エコログ",
+          "score": 20
+        },
+        {
+          "name": "電子ブレーカー",
+          "score": 19
+        },
+        {
+          "name": "ハルエネ",
+          "score": 18
+        },
+        {
+          "name": "太陽光",
+          "score": 17
+        },
+        {
+          "name": "HTBエナジー",
+          "score": 17
+        }
+      ]
     },
     {
       "id": "吉田拓未_ビッグローブ株式会社_20260226_125439",
       "person_name": "吉田拓未",
       "company_name": "ビッグローブ株式会社",
       "created_at": "2026-02-26T14:14:31.357317",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "BiZiMo光",
+          "score": 26
+        },
+        {
+          "name": "法人携帯",
+          "score": 23
+        },
+        {
+          "name": "WiMAX",
+          "score": 24
+        },
+        {
+          "name": "Biglobe光",
+          "score": 27
+        },
+        {
+          "name": "メディケア生命保険",
+          "score": 20
+        }
+      ]
     },
     {
       "id": "福島敬_ビッグローブ株式会社_20260226_125557",
       "person_name": "福島敬",
       "company_name": "ビッグローブ株式会社",
       "created_at": "2026-02-26T14:14:31.370367",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "BiZiMo光",
+          "score": 28
+        },
+        {
+          "name": "法人携帯",
+          "score": 26
+        },
+        {
+          "name": "Sonet光",
+          "score": 25
+        },
+        {
+          "name": "テレWi-Fi",
+          "score": 22
+        },
+        {
+          "name": "デジタルレシピ",
+          "score": 19
+        }
+      ]
     },
     {
       "id": "形部孝広_株式会社パートナーリンク_20260226_125949",
       "person_name": "形部孝広",
       "company_name": "株式会社パートナーリンク",
       "created_at": "2026-02-26T14:14:31.382374",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "BiZiMo光",
+          "score": 28
+        },
+        {
+          "name": "ハルエネでんき（法人向け新電力）",
+          "score": 24
+        },
+        {
+          "name": "プレミアムウォーター",
+          "score": 28
+        },
+        {
+          "name": "法人携帯",
+          "score": 27
+        },
+        {
+          "name": "エコログ（エネルギーコスト最適化）",
+          "score": 23
+        }
+      ]
     },
     {
       "id": "川由祐輔_株式会社パートナーリンク_20260226_130128",
       "person_name": "川由祐輔",
       "company_name": "株式会社パートナーリンク",
       "created_at": "2026-02-26T14:14:31.395786",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "WiMAX",
+          "score": 25
+        },
+        {
+          "name": "エコログ",
+          "score": 23
+        },
+        {
+          "name": "法人携帯",
+          "score": 23
+        },
+        {
+          "name": "BiZiMo光",
+          "score": 24
+        },
+        {
+          "name": "ハルエネ",
+          "score": 22
+        }
+      ]
     },
     {
       "id": "竹中由重_馬車道法律事務所_20260226_130455",
       "person_name": "竹中由重",
       "company_name": "馬車道法律事務所",
       "created_at": "2026-02-26T14:14:31.408423",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "E-STAMP",
+          "score": 27
+        },
+        {
+          "name": "顧問バンク",
+          "score": 25
+        },
+        {
+          "name": "法人携帯",
+          "score": 18
+        },
+        {
+          "name": "BiZiMoWiFi",
+          "score": 16
+        },
+        {
+          "name": "研修サービス",
+          "score": 17
+        }
+      ]
     },
     {
       "id": "井出智也_株式会社ハルエネ_20260226_134305",
       "person_name": "井出智也",
       "company_name": "株式会社ハルエネ",
       "created_at": "2026-02-26T14:14:31.421154",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "エコログ",
+          "score": 26
+        },
+        {
+          "name": "HTBエナジー",
+          "score": 26
+        },
+        {
+          "name": "BiZiMo光",
+          "score": 23
+        },
+        {
+          "name": "電子ブレーカー",
+          "score": 23
+        },
+        {
+          "name": "日本ガス",
+          "score": 23
+        }
+      ]
     },
     {
       "id": "横井康介_野村證券株式会社_20260226_130951",
       "person_name": "横井康介",
       "company_name": "野村證券株式会社",
       "created_at": "2026-02-26T14:14:31.433954",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "アメックスクレジットカード",
+          "score": 28
+        },
+        {
+          "name": "メディケア生命保険",
+          "score": 25
+        },
+        {
+          "name": "顧問バンク",
+          "score": 24
+        },
+        {
+          "name": "E-STAMP",
+          "score": 21
+        },
+        {
+          "name": "研修サービス",
+          "score": 19
+        }
+      ]
     },
     {
       "id": "中村安希_日本たばこ産業株式会社_20260226_134311",
       "person_name": "中村安希",
       "company_name": "日本たばこ産業株式会社",
       "created_at": "2026-02-26T14:14:31.435342",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "テレWi-Fi",
+          "score": 18
+        },
+        {
+          "name": "電子ブレーカー",
+          "score": 17
+        },
+        {
+          "name": "BiZiMo光",
+          "score": 15
+        },
+        {
+          "name": "決済プラットフォーム",
+          "score": 14
+        },
+        {
+          "name": "FREE JOB",
+          "score": 14
+        }
+      ]
     },
     {
       "id": "林翔太_日本瓦斯株式会社_20260226_135002",
       "person_name": "林翔太",
       "company_name": "日本瓦斯株式会社",
       "created_at": "2026-02-26T14:14:31.436661",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "日本ガス",
+          "score": 21
+        },
+        {
+          "name": "㈱エコログ",
+          "score": 20
+        },
+        {
+          "name": "HTBエナジー",
+          "score": 18
+        },
+        {
+          "name": "ハルエネ",
+          "score": 17
+        },
+        {
+          "name": "太陽光",
+          "score": 15
+        }
+      ]
     },
     {
       "id": "福地健之_ソフトバンク株式会社_20260226_140333",
       "person_name": "福地健之",
       "company_name": "ソフトバンク株式会社",
       "created_at": "2026-02-26T14:14:31.437402",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "研修サービス",
+          "score": 24
+        },
+        {
+          "name": "デジタルレシピ",
+          "score": 23
+        },
+        {
+          "name": "BiZiMo光",
+          "score": 21
+        },
+        {
+          "name": "法人携帯",
+          "score": 21
+        },
+        {
+          "name": "顧問バンク",
+          "score": 20
+        }
+      ]
     },
     {
       "id": "三好一徳_ソニーネットワークコミュニケーションズ株式会社_20260226_140042",
       "person_name": "三好一徳",
       "company_name": "ソニーネットワークコミュニケーションズ株式会社",
       "created_at": "2026-02-26T14:14:31.437987",
-      "top_products": []
+      "top_products": [
+        {
+          "name": "BiZiMo光",
+          "score": 20
+        },
+        {
+          "name": "Sonet光",
+          "score": 21
+        },
+        {
+          "name": "Biglobe光",
+          "score": 19
+        },
+        {
+          "name": "法人携帯",
+          "score": 18
+        },
+        {
+          "name": "WiMAX",
+          "score": 17
+        }
+      ]
     }
   ]
 }
