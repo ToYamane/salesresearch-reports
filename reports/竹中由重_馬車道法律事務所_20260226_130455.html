@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>営業リサーチレポート - 竹中由重 様</title>
+  <style>/* 営業リサーチレポート - 共通CSS */
+
+/* CSS変数（テーマカラー） */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --success-light: #22c55e;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --bg-main: #f1f5f9;
+  --bg-card: #f8fafc;
+  --bg-white: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* レポートナビゲーション */
+.report-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+.report-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.report-nav a:hover {
+  background-color: #e0f2fe;
+  text-decoration: none;
+}
+
+/* リセット & ベース */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+}
+
+/* コンテナ */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* レポートヘッダー */
+.report-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.report-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.report-header .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.report-header .meta-item strong {
+  font-weight: 600;
+}
+
+/* ランキングサマリー */
+.ranking-summary {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.ranking-summary-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.ranking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border-left: 4px solid var(--border-medium);
+}
+
+.ranking-item:nth-child(1) { border-left-color: #f59e0b; background: #fffbeb; }
+.ranking-item:nth-child(2) { border-left-color: #9ca3af; background: #f9fafb; }
+.ranking-item:nth-child(3) { border-left-color: #d97706; background: #fff7ed; }
+
+.rank-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--border-light);
+  color: var(--text-secondary);
+}
+
+.rank-badge.rank-1 { background: #fef3c7; color: #b45309; }
+.rank-badge.rank-2 { background: #e5e7eb; color: #374151; }
+.rank-badge.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.rank-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rank-score {
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: var(--bg-white);
+}
+
+.rank-score.high { color: var(--success); }
+.rank-score.medium { color: #b45309; }
+.rank-score.low { color: var(--danger); }
+
+/* セクション */
+.section {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: 0.75rem;
+}
+
+/* サブセクション */
+.subsection {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: var(--bg-white);
+}
+
+.subsection:nth-child(odd) {
+  background: var(--bg-card);
+}
+
+.subsection:last-child {
+  margin-bottom: 0;
+}
+
+.subsection-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--primary);
+}
+
+/* 情報リスト */
+.info-list {
+  list-style: none;
+}
+
+.info-list li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.info-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.info-list .label {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.info-list .value {
+  font-weight: 500;
+  margin-left: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* 強みカード */
+.strengths-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, #e0f2fe 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.strengths-card p {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+/* 商材カード */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-card:last-child {
+  margin-bottom: 0;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-rank {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.product-rank.rank-1 { background: #fef3c7; color: #b45309; }
+.product-rank.rank-2 { background: #e5e7eb; color: #374151; }
+.product-rank.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* スコアバッジ */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.score-badge.high {
+  background: #dcfce7;
+  color: var(--success);
+}
+
+.score-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.score-badge.low {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+/* スコア内訳 */
+.score-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.score-item {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.score-item .score-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.score-item .score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.score-item .score-max {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 商材詳細 */
+.product-detail-section {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-detail-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.product-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.product-meta-item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-meta-item .label {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.product-meta-item .value {
+  font-weight: 500;
+}
+
+/* 理由リスト */
+.reason-list {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.reason-list li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.reason-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 販売戦略セクション */
+.strategy-section {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 1px solid #fde68a;
+}
+
+.strategy-item {
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.strategy-item:last-child {
+  margin-bottom: 0;
+}
+
+.steps-list {
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps-list li {
+  counter-increment: step;
+  padding: 0.75rem 0 0.75rem 2.5rem;
+  position: relative;
+  border-left: 2px solid var(--border-light);
+  margin-left: 0.75rem;
+}
+
+.steps-list li::before {
+  content: 'Step ' counter(step);
+  position: absolute;
+  left: -1rem;
+  top: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  background: var(--primary);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps-list li:last-child {
+  border-left-color: transparent;
+}
+
+/* Q&Aスタイル */
+.qa-item {
+  margin-bottom: 1rem;
+}
+
+.qa-item:last-child {
+  margin-bottom: 0;
+}
+
+.qa-question {
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  background: #fee2e2;
+  border-radius: 8px 8px 0 0;
+}
+
+.qa-answer {
+  padding: 0.75rem 1rem;
+  background: #dcfce7;
+  border-radius: 0 0 8px 8px;
+}
+
+/* リンク */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 一覧ページ用スタイル */
+.report-list-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.report-list-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-list-header p {
+  opacity: 0.9;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.report-list-card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.report-list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+}
+
+.report-list-card .person-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.report-list-card .company-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.report-list-card .report-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* 一覧カード内の商材リスト */
+.card-products {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  background: var(--bg-card);
+  border-radius: 6px;
+}
+
+.card-products-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.card-products-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card-product-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.25rem 0;
+  border-left: 3px solid var(--border-light);
+  padding-left: 0.5rem;
+}
+
+.card-product-item.rank-1 { border-left-color: #f59e0b; }
+.card-product-item.rank-2 { border-left-color: #9ca3af; }
+.card-product-item.rank-3 { border-left-color: #d97706; }
+
+.card-product-rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--border-light);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.card-product-item.rank-1 .card-product-rank { background: #fef3c7; color: #b45309; }
+.card-product-item.rank-2 .card-product-rank { background: #e5e7eb; color: #374151; }
+.card-product-item.rank-3 .card-product-rank { background: #fed7aa; color: #c2410c; }
+
+.card-product-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-product-score {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+/* 空状態 */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+}
+
+/* 参照URLリスト */
+.reference-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.reference-list li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.reference-list li::before {
+  content: '📄';
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+}
+
+.reference-list a {
+  color: var(--primary);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.reference-list a:hover {
+  text-decoration: underline;
+}
+
+/* 印刷用スタイル */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .report-header {
+    background: var(--primary) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-after: avoid;
+  }
+
+  .section {
+    box-shadow: none;
+    border: 1px solid var(--border-light);
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  .product-card {
+    page-break-inside: avoid;
+  }
+
+  .score-breakdown {
+    gap: 0.5rem;
+  }
+
+  a {
+    color: var(--text-primary);
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+}
+
+/* ===========================================
+   新セクション用スタイル（品質向上対応）
+   =========================================== */
+
+/* 職歴詳細スタイル */
+.work-history-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.work-history-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.work-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.work-company {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.work-period {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.work-role {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.work-achievements,
+.work-projects {
+  margin-top: 0.75rem;
+}
+
+.achievements-label,
+.projects-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.work-achievements ul,
+.work-projects ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.work-achievements li,
+.work-projects li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.work-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.work-projects li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.work-scope {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.scope-item {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: #e0f2fe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.no-data {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* 営業経験セクション */
+.sales-experience {
+  background: #f0fdf4 !important;
+}
+
+.sales-experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sales-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sales-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sales-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.sales-achievements,
+.sales-networks {
+  background: var(--bg-white);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+}
+
+.sales-achievements h4,
+.sales-networks h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.sales-achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sales-achievements li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.sales-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 人脈の質的評価 */
+.network-quality {
+  background: #e0f2fe !important;
+}
+
+.network-item {
+  margin-bottom: 1rem;
+}
+
+.network-item:last-child {
+  margin-bottom: 0;
+}
+
+.decision-maker-access {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.network-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.network-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.network-badge.high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.network-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.network-badge.low {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.network-item h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.positions-list,
+.speaking-list,
+.media-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.positions-list li,
+.speaking-list li,
+.media-list li {
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.positions-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.speaking-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--warning);
+  border-radius: 50%;
+}
+
+.media-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.influence {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.influence-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.influence-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* 起業志向セクション */
+.entrepreneurial {
+  background: #fef3c7 !important;
+}
+
+.readiness-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.readiness-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.readiness-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.readiness-badge.高 {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.readiness-badge.中 {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.readiness-badge.低 {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.entrepreneurial-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.entrepreneurial-item {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.ent-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.ent-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* この人だからこそ売れる理由 */
+.why-this-person {
+  background: #f0fdf4;
+  border-radius: 8px;
+  padding: 1rem !important;
+  margin-top: 1rem;
+}
+
+.why-this-person-content {
+  background: var(--bg-white);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+}
+
+.why-this-person-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* 成功シナリオ */
+.success-scenario {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+  border: 1px solid #86efac;
+}
+
+.scenario-content {
+  background: var(--bg-white);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+}
+
+.scenario-content p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* リスク要因 */
+.risk-factors {
+  background: #fff7ed !important;
+  border: 1px solid #fdba74;
+}
+
+.risk-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.risk-list li {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: var(--bg-white);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid var(--warning);
+}
+
+.risk-list li:last-child {
+  margin-bottom: 0;
+}
+
+.risk-list li::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 8px;
+  height: 8px;
+  background: var(--warning);
+  border-radius: 50%;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .report-header {
+    padding: 1.5rem;
+  }
+
+  .report-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .score-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .product-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .decision-maker-access {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .readiness-indicator {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entrepreneurial-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+/* ===========================================
+   情報取得スコア表示
+   =========================================== */
+
+/* 情報取得スコアカード */
+.info-score-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.info-score-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.info-score-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.info-score-value.high { color: #059669; }
+.info-score-value.medium { color: #d97706; }
+.info-score-value.low { color: #dc2626; }
+
+.info-score-bar {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.info-score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.info-score-description {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+</style>
+</head>
+<body>
+  <nav class="report-nav no-print">
+    <a href="../index.html">&larr; レポート一覧に戻る</a>
+  </nav>
+  <div class="container">
+    <!-- レポートヘッダー -->
+    <header class="report-header">
+      <h1>営業リサーチレポート</h1>
+      <div class="meta">
+        <div class="meta-item">
+          <span>対象:</span>
+          <strong>竹中由重 様 / 馬車道法律事務所</strong>
+        </div>
+        <div class="meta-item">
+          <span>作成日:</span>
+          <strong>2026年02月26日</strong>
+        </div>
+      </div>
+    </header>
+
+    <!-- ランキングサマリー -->
+    <section class="ranking-summary no-print">
+      <h2 class="ranking-summary-title">推奨商材 TOP5</h2>
+      <ol class="ranking-list">
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-1">1</span>
+          <span class="rank-name">E-STAMP</span>
+          <span class="rank-score high">27/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-2">2</span>
+          <span class="rank-name">顧問バンク</span>
+          <span class="rank-score high">25/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-3">3</span>
+          <span class="rank-name">法人携帯</span>
+          <span class="rank-score medium">18/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-4">4</span>
+          <span class="rank-name">BiZiMoWiFi</span>
+          <span class="rank-score low">16/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-5">5</span>
+          <span class="rank-name">研修サービス</span>
+          <span class="rank-score low">17/30</span>
+        </li>
+        
+      </ol>
+    </section>
+
+    <!-- セクション1: 人物プロファイル -->
+    <section class="section profile-section">
+      <h2 class="section-title">
+        <span class="section-number">1</span>
+        人物プロファイル
+      </h2>
+
+      <!-- 基本情報 -->
+      <div class="subsection">
+        <h3 class="subsection-title">基本情報</h3>
+
+        <!-- 情報取得スコア -->
+        
+
+        <ul class="info-list">
+          <li>
+            <span class="label">氏名:</span>
+            <span class="value">竹中由重</span>
+          </li>
+          <li>
+            <span class="label">会社名:</span>
+            <span class="value">馬車道法律事務所</span>
+          </li>
+          <li>
+            <span class="label">役職:</span>
+            <span class="value">弁護士</span>
+          </li>
+          <li>
+            <span class="label">現在のステータス:</span>
+            <span class="value">弁護士（法律事務所勤務）</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 経歴・専門性 -->
+      <div class="subsection">
+        <h3 class="subsection-title">経歴・専門性</h3>
+        
+        <div class="work-history-detail">
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">馬車道法律事務所</span>
+              <span class="work-period">2010年12月〜現在</span>
+            </div>
+            <div class="work-role">弁護士 / 15年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>1973年創設の老舗法律事務所に所属し、幅広い民事事件を担当</li>
+                
+                <li>相続事件（遺言、税金対策など生前の予防法務含む）を主な取り扱い分野とする</li>
+                
+                <li>少年付添人（弁護活動）にも対応</li>
+                
+              </ul>
+            </div>
+            
+            
+            
+            <div class="work-projects">
+              <span class="projects-label">主要プロジェクト:</span>
+              <ul>
+                
+                <li>相続・遺言に関する予防法務案件</li>
+                
+                <li>民事一般（不動産、建築紛争、交通事故等）</li>
+                
+                <li>刑事事件・少年事件</li>
+                
+              </ul>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+        <ul class="info-list" style="margin-top: 1rem;">
+          <li>
+            <span class="label">専門知識領域:</span>
+            <span class="value">法務, コンプライアンス, 法律, 相続, 不動産, 民事, 企業法務, 契約法, 労働法, 刑事法</span>
+          </li>
+          <li>
+            <span class="label">保有資格:</span>
+            <span class="value">弁護士（司法試験合格: 2009年9月、弁護士登録: 2010年12月、登録番号: 43117）</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 営業・ビジネス開発経験 -->
+      
+
+      <!-- 人脈・ネットワーク -->
+      <div class="subsection">
+        <h3 class="subsection-title">人脈・ネットワーク</h3>
+        <ul class="info-list">
+          <li>
+            <span class="label">人脈のある業界:</span>
+            <span class="value">法律, 不動産, 金融, 中小企業, 行政</span>
+          </li>
+          <li>
+            <span class="label">ネットワーク規模:</span>
+            <span class="value">medium</span>
+          </li>
+          <li>
+            <span class="label">発見したアカウント:</span>
+            <span class="value">
+              
+                なし
+              
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 人脈の質的評価 -->
+      
+      <div class="subsection network-quality">
+        <h3 class="subsection-title">人脈・影響力の詳細</h3>
+        
+        <div class="network-item decision-maker-access">
+          <span class="network-label">決裁者へのアクセス度:</span>
+          <span class="network-badge high">
+            中〜高（中小企業経営者、不動産オーナー、金融機関との接点）
+          </span>
+        </div>
+        
+        
+        <div class="network-item">
+          <h4>業界での立ち位置</h4>
+          <ul class="positions-list">
+            
+            <li>神奈川県弁護士会所属</li>
+            
+          </ul>
+        </div>
+        
+        
+        
+        
+        <div class="network-item influence">
+          <span class="influence-label">影響力指標:</span>
+          <span class="influence-value">横浜エリアの法律事務所として地域密着型の信頼関係を構築</span>
+        </div>
+        
+      </div>
+      
+
+      <!-- 起業・独立志向 -->
+      
+      <div class="subsection entrepreneurial">
+        <h3 class="subsection-title">起業・独立志向</h3>
+        
+        <div class="readiness-indicator">
+          <span class="readiness-label">独立準備度:</span>
+          
+          
+          
+          <span class="readiness-badge 中">
+            中
+          </span>
+        </div>
+        
+        <div class="entrepreneurial-details">
+          
+          <div class="entrepreneurial-item">
+            <span class="ent-label">起業経験:</span>
+            <span class="ent-value">なし</span>
+          </div>
+          
+          
+          <div class="entrepreneurial-item">
+            <span class="ent-label">副業:</span>
+            <span class="ent-value">なし</span>
+          </div>
+          
+          
+          <div class="entrepreneurial-item">
+            <span class="ent-label">投資経験:</span>
+            <span class="ent-value">不明</span>
+          </div>
+          
+          
+          <div class="entrepreneurial-item">
+            <span class="ent-label">独立への関心:</span>
+            <span class="ent-value">法律事務所での勤務弁護士として活動中。独立開業の可能性あり</span>
+          </div>
+          
+        </div>
+      </div>
+      
+
+      <!-- 参照URL -->
+      
+      <div class="subsection">
+        <h3 class="subsection-title">参照URL</h3>
+        <ul class="reference-list">
+          
+          <li>
+            <a href="https://www.bashamichi-law.jp/" target="_blank" rel="noopener noreferrer">
+              馬車道法律事務所 公式サイト
+            </a>
+          </li>
+          
+          <li>
+            <a href="https://sashiireya.com/bengoshi/lawyer_43117.php" target="_blank" rel="noopener noreferrer">
+              竹中由重弁護士 刑事事件対応情報
+            </a>
+          </li>
+          
+          <li>
+            <a href="https://akiya-sozoku.jp/specialist/2802" target="_blank" rel="noopener noreferrer">
+              馬車道法律事務所（しきサポ）
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- この人物の強み -->
+      
+      <div class="subsection">
+        <h3 class="subsection-title">この人物の強み</h3>
+        <div class="strengths-card">
+          <p>2010年の弁護士登録以来、約15年にわたり馬車道法律事務所（1973年創設の老舗事務所）で幅広い法律業務に携わる。岐阜県立岐阜高校、中央大学法学部法律学科卒、立教大学大学院法務研究科修了という確かな学歴基盤を持つ。相続・遺言、不動産、企業法務など幅広い分野に精通し、横浜・神奈川エリアの中小企業経営者や個人事業主との信頼関係を構築している。法律専門家としての高い信頼性は、商材の販売において大きなアドバンテージとなる。</p>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- セクション2: 推奨商材 -->
+    <section class="section products-section">
+      <h2 class="section-title">
+        <span class="section-number">2</span>
+        推奨商材（上位5件）
+      </h2>
+
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-1">第1位</span>
+          <span class="product-name">E-STAMP</span>
+          <span class="score-badge high">
+            27/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">9<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">10<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">㈱E-STAMP</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">電子契約・電子印鑑</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">経営基盤・リスク管理</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">紙契約の電子化や押印業務を効率化したい企業</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">電子契約/電子印鑑サービス。紙契約書のスキャン保管や契約管理の効率化を訴求。契約書の作成・締結・保管をオンライン化し、押印・郵送コスト削減と監査対応の効率化に寄与。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】弁護士として15年間、契約書の作成・レビュー・締結業務に日常的に携わっており、電子契約の法的有効性（電子署名法、e-文書法）を正確に説明できる。契約実務の専門家として圧倒的な説得力を持つ。</li>
+            
+            <li>【人脈マッチ】馬車道法律事務所の顧問先企業や相談者として、契約業務の効率化ニーズを持つ中小企業経営者との接点が豊富。横浜エリアの企業ネットワークを活用した紹介営業が可能。</li>
+            
+            <li>【専門知識】契約法・電子署名法に関する深い法的知識を保有。電子契約の法的有効性について法律の専門家として解説でき、導入時の法的リスクに関する懸念を払拭できる唯一の存在。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">横浜・神奈川エリアの中小企業で、紙の契約書管理に課題を感じている企業。特に不動産業、建設業、人材派遣業など契約書が多い業種の経営者・管理部門。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://e-stamp.jp/" target="_blank" rel="noopener noreferrer">https://e-stamp.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 代理店制度あり。E-STAMP公式サイトで代理店募集を実施中。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>導入企業で印紙税・郵送費の削減に成功した事例あり</li>
+            
+            <li>プラチナサポートパックで取引先への説明を代行するサービスも提供</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">弁護士としての日常業務の中で「この契約書、電子化できたら便利ですよね」と自然な形で提案。法的有効性を専門家として保証できるため、導入への心理的ハードルを大幅に下げられる。顧問先への提案から開始し、成功事例を作って横展開。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>契約の専門家である弁護士が電子契約を推薦することで、「法的に問題ない」という最大の懸念を一発で解消できる。これは他の営業パーソンには絶対にできない圧倒的な強み。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-2">第2位</span>
+          <span class="product-name">顧問バンク</span>
+          <span class="score-badge high">
+            25/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">9<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">㈱顧問バンク/7559707</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">顧問/専門家マッチング</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">業務効率化・DX</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">企業（経営課題を抱える中小〜大手）</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">経営・人事・財務などの外部顧問や専門家を必要な期間・条件でマッチング。中間マージンを抑えた運用を掲げるサービス。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】15年の弁護士経験を通じ、企業が外部専門家（弁護士・税理士・社労士等）を必要とする場面を熟知。経営課題の本質を理解した上で、最適な専門家マッチングの価値を的確に伝えられる。</li>
+            
+            <li>【人脈マッチ】弁護士として中小企業経営者との接点が豊富であり、「経営課題を抱えているが、誰に相談すればいいかわからない」という企業を多く知っている。また、士業ネットワーク（税理士・社労士・司法書士等）を通じた紹介も可能。</li>
+            
+            <li>【専門知識】法務・コンプライアンスの専門家として、顧問契約の仕組みや外部専門家活用のメリットを論理的に説明できる。企業法務の観点から顧問バンクの活用シーンを具体的に提案可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">経営課題を抱える中小〜中堅企業の経営者。特に、法務・人事・財務の専門知識が不足しているが、フルタイムの専門家を雇用するほどではない企業。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://common-bank.com/" target="_blank" rel="noopener noreferrer">https://common-bank.com/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 顧問バンクは紹介手数料不要のプラットフォーム型サービス。登録顧問10,000人超。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>登録顧問10,000人超のプラットフォームで企業と専門家をマッチング</li>
+            
+            <li>スポット・長期・成果報酬など柔軟な契約形態に対応</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">弁護士業務の中で「法務以外の課題も抱えていませんか？」とヒアリング。自身が法務顧問として関わる中で、他分野の専門家ニーズを引き出し、顧問バンクを紹介。竹中氏自身も顧問として登録し、実体験に基づく推薦が可能。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>弁護士として企業の経営課題に日々接しているため、顧問バンクの価値を実感を持って伝えられる。自らも顧問として登録可能であり、「使う側」としての説得力がある。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-3">第3位</span>
+          <span class="product-name">法人携帯</span>
+          <span class="score-badge medium">
+            18/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">5<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">5<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">㈱アイ・ステーション</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">通信インフラサービス (法人向け代理店)</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">コスト削減</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">法人 (特に中小企業)</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">携帯電話やタブレット、Wi-Fiなどのモバイルデバイスを法人向けに販売する代理店。通信コスト削減提案を行う。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】通信業界の直接経験はないが、弁護士として法人の経費管理・コスト構造に関する知識を持ち、通信費削減の経営メリットを論理的に説明可能。</li>
+            
+            <li>【人脈マッチ】馬車道法律事務所の顧問先・相談先として、通信コスト削減ニーズのある中小企業経営者との接点が多数。信頼関係が構築済みのため、クロスセル提案がしやすい。</li>
+            
+            <li>【専門知識】契約内容の精査力が高く、通信契約の条件比較やコスト分析を正確に行える。弁護士の目で契約内容を確認している安心感は顧客にとって大きな付加価値。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">横浜・神奈川エリアの中小企業で、通信費の見直しを検討している法人。特に従業員数10-50名規模の企業で、複数台の法人携帯を契約している企業。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://i-sta.co.jp/" target="_blank" rel="noopener noreferrer">https://i-sta.co.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> ソフトバンク正規販売代理店。販売パートナー募集あり（問い合わせ: 0120-114-041）。累計30万台の販売実績。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>法人スマホコムを通じて累計導入台数500台突破（2024年時点）</li>
+            
+            <li>通信コスト削減提案による法人顧客獲得実績多数</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">顧問先企業との面談時に「通信費の見直しはされていますか？」と自然にヒアリング。コスト削減のメリットを数値で示し、弁護士として契約内容のチェックも行える点をアピール。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>弁護士という肩書きによる信頼感と、法人契約の精査能力を兼ね備えている。中小企業経営者との既存関係を活用したクロスセルが最も効率的。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-4">第4位</span>
+          <span class="product-name">BiZiMoWiFi</span>
+          <span class="score-badge low">
+            16/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">4<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">4<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">㈱アクセル</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">法人向けWi-Fi（BiZiMo）</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">コスト削減</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">店舗・中小企業</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">BiZiMo光のオプションとしても提供される法人向けWi-Fi。集客用Wi-Fiや保守サポート等の付帯オプションを選択できる。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】通信・Wi-Fi業界の直接経験はないが、法律事務所運営を通じてオフィスのIT環境整備の重要性を理解。店舗・事務所のWi-Fi導入ニーズを把握している。</li>
+            
+            <li>【人脈マッチ】横浜エリアの店舗経営者、中小企業オーナーとの接点が豊富。不動産関連の相談を通じて、テナント入居者やビルオーナーへのアプローチも可能。</li>
+            
+            <li>【専門知識】通信サービスの契約条件を法的観点から精査できる。特にフリーWi-Fi提供時の個人情報保護法との関係など、法的リスク管理の観点からの助言が可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">横浜・みなとみらいエリアの飲食店、小売店、クリニック等の店舗事業者。顧客向けフリーWi-Fi導入やオフィスのWi-Fi環境改善を検討している事業者。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://bizimo.ne.jp/" target="_blank" rel="noopener noreferrer">https://bizimo.ne.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 販売パートナー制度あり。月利150万円の収益モデル、営業研修、クロスセル機会を提供。2025年3月に株式会社ハイホーに吸収合併。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>事業者専用のWi-Fiルーターで最大100台のデバイスを同時接続可能</li>
+            
+            <li>リダイレクト機能による集客効果の事例あり</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">法律相談の際に「お店のWi-Fi環境は整っていますか？」と話題を展開。集客効果やフリーWi-Fi提供時の法的留意点（利用規約、個人情報保護）についてもアドバイスでき、信頼ベースでの提案が可能。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>弁護士としての信頼性に加え、横浜エリアの事業者ネットワークを活用できる。Wi-Fi提供時の法的リスク管理についてもワンストップで相談できる点が差別化ポイント。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-5">第5位</span>
+          <span class="product-name">研修サービス</span>
+          <span class="score-badge low">
+            17/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">5<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">5<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">DXHR㈱</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">DX/AI人材育成</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">娯楽・学習</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">企業（新人〜管理職、DX推進担当）</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">企業向けにAI・データ活用・DX推進の研修を提供。eラーニング/伴走型など複数形態を展開。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】教育・研修業界の直接経験はないが、弁護士としてコンプライアンス研修や法務研修の講師経験がある可能性が高い。企業の人材育成ニーズを理解している。</li>
+            
+            <li>【人脈マッチ】顧問先企業の経営者・管理職との接点を通じて、DX推進に課題を感じている企業を把握。特に中小企業のDX遅れに対する危機感を共有できる立場にある。</li>
+            
+            <li>【専門知識】法務DX（リーガルテック）の最新動向に関する知見を持ち、企業のDX推進における法的課題（個人情報保護、AI利用ガイドライン等）についても助言可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">DX推進に課題を感じている中小企業の経営者・管理職。特にIT人材が不足しているが、デジタル化の必要性を感じている横浜エリアの中堅企業。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://dx-hr.co.jp/" target="_blank" rel="noopener noreferrer">https://dx-hr.co.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 代理店・パートナー制度の詳細は要問い合わせ。eラーニング/伴走型研修など複数形態で提供。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>職種別AI・DX研修プログラムを提供</li>
+            
+            <li>SEC-AI（AIとセキュリティのデジタルトレーニングセンター）を運営</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">法律相談の場で「御社のDX推進はいかがですか？」とヒアリング。DXに伴う法的リスク（個人情報保護、セキュリティ）への助言と合わせて、人材育成研修を提案。弁護士が推薦する研修サービスとして信頼性を担保。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>弁護士として企業経営者との信頼関係を持ち、経営課題を幅広く把握できる立場にある。DXの法的側面にも精通しており、研修の必要性を多角的に説明できる。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+    </section>
+
+    <!-- セクション3: 販売戦略提案 -->
+    <section class="section strategy-section">
+      <h2 class="section-title">
+        <span class="section-number">3</span>
+        販売戦略提案
+      </h2>
+
+      
+      <!-- この人物に最適な販売スタイル -->
+      <div class="strategy-item">
+        <h4 class="product-detail-title">この人物に最適な販売スタイル</h4>
+        <p style="line-height: 1.8;">竹中氏は弁護士として15年のキャリアを持ち、横浜・神奈川エリアの中小企業経営者や個人事業主との信頼関係が築かれている。最適な販売スタイルは「信頼ベースの紹介・クロスセル型営業」。法律相談の場で顧客の経営課題を幅広くヒアリングし、法律サービス以外の課題解決策として商材を自然に提案する。弁護士としての高い信頼性が最大の武器であり、押し売りではなく「専門家からの推薦」として受け入れられやすい。</p>
+      </div>
+
+      <!-- 注力すべきターゲット顧客 -->
+      <div class="strategy-item">
+        <h4 class="product-detail-title">注力すべきターゲット顧客</h4>
+        <p style="line-height: 1.8;">【第一ターゲット】横浜・神奈川エリアの中小企業経営者（従業員10-100名規模）。法律相談を通じて既に接点がある企業で、契約管理・コスト削減・DX推進に課題を持つ企業。【第二ターゲット】不動産オーナー・管理会社。相続・不動産関連の相談を通じて接点があり、電子契約やコスト削減ニーズが高い。【第三ターゲット】士業ネットワーク（税理士・社労士・司法書士等）を通じた紹介先企業。</p>
+      </div>
+
+      <!-- 初期の営業活動案 -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">初期の営業活動案</h4>
+        <ul class="steps-list">
+          
+          <li>【1週目】既存顧問先企業リストを整理し、各企業の経営課題（契約管理、通信費、DX推進等）を棚卸し</li>
+          
+          <li>【2週目】E-STAMP（電子契約）について自事務所での導入を検討・実施。実体験を積む</li>
+          
+          <li>【3週目】顧問先企業3社に「契約業務の効率化」をテーマにした面談を設定。電子契約の法的有効性について情報提供</li>
+          
+          <li>【4週目】面談結果を踏まえ、ニーズのある企業にE-STAMP導入提案。同時に顧問バンクへの自身の登録も完了</li>
+          
+          <li>【5-6週目】法人携帯・Wi-Fiについて通信コスト削減の提案を顧問先2社に実施。コスト比較資料を準備</li>
+          
+          <li>【7-8週目】最初の成約を目指す。成功事例を作り、神奈川県弁護士会のネットワークを通じた紹介営業の基盤構築</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- 成功シナリオ -->
+      
+      <div class="strategy-item success-scenario">
+        <h4 class="product-detail-title">成功シナリオ</h4>
+        <div class="scenario-content">
+          <p>【3ヶ月後】E-STAMP導入3社、法人携帯乗り換え2社を達成。月額報酬15万円を確保。自事務所での電子契約導入実績を活用した提案力が強化。【6ヶ月後】顧問バンクを通じた新規企業とのマッチングが軌道に乗り、月間5件の商談実施。電子契約＋通信コスト削減のパッケージ提案で月額報酬40万円。【1年後】横浜エリアの中小企業ネットワークでの認知度が向上。弁護士×経営支援のワンストップサービスとして差別化に成功し、月額報酬80万円以上を安定的に確保。</p>
+        </div>
+      </div>
+      
+
+      <!-- 想定されるリスクと対策 -->
+      
+      <div class="strategy-item risk-factors">
+        <h4 class="product-detail-title">想定されるリスクと対策</h4>
+        <ul class="risk-list">
+          
+          <li>【リスク1】弁護士業務との時間的両立が困難 → 対策：法律相談の延長線上で自然に提案するスタイルを徹底。別途営業活動の時間を確保するのではなく、既存業務フローに組み込む</li>
+          
+          <li>【リスク2】弁護士の品位保持との兼ね合い → 対策：営業ではなく「経営課題解決の一環としての情報提供」という位置づけを明確にする。弁護士職務基本規程に抵触しない範囲で活動</li>
+          
+          <li>【リスク3】商材の専門知識不足 → 対策：まずE-STAMP（電子契約）など法律に近い商材から開始し、段階的に扱う商材を拡大。各商材の研修・勉強会に参加</li>
+          
+          <li>【リスク4】既存クライアントとの関係への影響 → 対策：あくまで情報提供ベースとし、押し売りを一切しない。クライアントの利益最優先の姿勢を堅持</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- 想定Q&A -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">想定されるハードルと対策</h4>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q1: 弁護士が商材を紹介するのは適切なのですか？</div>
+          <div class="qa-answer">A1: お客様の経営課題を総合的にサポートする一環として、信頼できるサービスの情報提供を行っています。法律サービスと同様に、お客様の利益を最優先に考えた上でのご紹介です。</div>
+        </div>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q2: なぜ電子契約を勧めるのですか？</div>
+          <div class="qa-answer">A2: 弁護士として日々契約書を扱う中で、電子契約の法的有効性と業務効率化効果を実感しています。電子署名法に基づく適切なサービスであり、法的にも安心してご利用いただけます。</div>
+        </div>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q3: 導入後に法的な問題が生じた場合はどうなりますか？</div>
+          <div class="qa-answer">A3: 弁護士として法的なサポートも可能です。電子契約の法的有効性に関するご質問や、契約トラブルが発生した場合にも、法律の専門家として対応させていただきます。</div>
+        </div>
+        
+      </div>
+      
+
+      <!-- 次のアクション提案 -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">次のアクション提案</h4>
+        <p style="line-height: 1.8;">1. まず自事務所でE-STAMPの導入を検討し、実体験を積む
+2. 顧問先企業リスト（上位10社）を作成し、各企業の契約管理状況を確認
+3. 最も関係の深い企業3社に「契約業務の効率化」をテーマに情報提供面談を設定
+4. 顧問バンクに自身を顧問として登録し、プラットフォームの使い勝手を体験</p>
+      </div>
+      
+
+      
+    </section>
+
+    <!-- フッター -->
+    <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem;" class="no-print">
+      <p>営業リサーチ自動化システム | 作成日: 2026年02月26日</p>
+    </footer>
+  </div>
+</body>
+</html>

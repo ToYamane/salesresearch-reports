@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>営業リサーチレポート - 福島敬 様</title>
+  <style>/* 営業リサーチレポート - 共通CSS */
+
+/* CSS変数（テーマカラー） */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #16a34a;
+  --success-light: #22c55e;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --bg-main: #f1f5f9;
+  --bg-card: #f8fafc;
+  --bg-white: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* レポートナビゲーション */
+.report-nav {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+.report-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.report-nav a:hover {
+  background-color: #e0f2fe;
+  text-decoration: none;
+}
+
+/* リセット & ベース */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+}
+
+/* コンテナ */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* レポートヘッダー */
+.report-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.report-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.report-header .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.report-header .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.report-header .meta-item strong {
+  font-weight: 600;
+}
+
+/* ランキングサマリー */
+.ranking-summary {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.ranking-summary-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.ranking-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border-left: 4px solid var(--border-medium);
+}
+
+.ranking-item:nth-child(1) { border-left-color: #f59e0b; background: #fffbeb; }
+.ranking-item:nth-child(2) { border-left-color: #9ca3af; background: #f9fafb; }
+.ranking-item:nth-child(3) { border-left-color: #d97706; background: #fff7ed; }
+
+.rank-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--border-light);
+  color: var(--text-secondary);
+}
+
+.rank-badge.rank-1 { background: #fef3c7; color: #b45309; }
+.rank-badge.rank-2 { background: #e5e7eb; color: #374151; }
+.rank-badge.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.rank-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rank-score {
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: var(--bg-white);
+}
+
+.rank-score.high { color: var(--success); }
+.rank-score.medium { color: #b45309; }
+.rank-score.low { color: var(--danger); }
+
+/* セクション */
+.section {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-right: 0.75rem;
+}
+
+/* サブセクション */
+.subsection {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: var(--bg-white);
+}
+
+.subsection:nth-child(odd) {
+  background: var(--bg-card);
+}
+
+.subsection:last-child {
+  margin-bottom: 0;
+}
+
+.subsection-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--primary);
+}
+
+/* 情報リスト */
+.info-list {
+  list-style: none;
+}
+
+.info-list li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.info-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.info-list .label {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.info-list .value {
+  font-weight: 500;
+  margin-left: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* 強みカード */
+.strengths-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, #e0f2fe 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.strengths-card p {
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+/* 商材カード */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-card:last-child {
+  margin-bottom: 0;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.product-rank {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.product-rank.rank-1 { background: #fef3c7; color: #b45309; }
+.product-rank.rank-2 { background: #e5e7eb; color: #374151; }
+.product-rank.rank-3 { background: #fed7aa; color: #c2410c; }
+
+.product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* スコアバッジ */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.score-badge.high {
+  background: #dcfce7;
+  color: var(--success);
+}
+
+.score-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.score-badge.low {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+/* スコア内訳 */
+.score-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.score-item {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+
+.score-item .score-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.score-item .score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.score-item .score-max {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* 商材詳細 */
+.product-detail-section {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.product-detail-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.product-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.product-meta-item {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-meta-item .label {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.product-meta-item .value {
+  font-weight: 500;
+}
+
+/* 理由リスト */
+.reason-list {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+.reason-list li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.reason-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 販売戦略セクション */
+.strategy-section {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 1px solid #fde68a;
+}
+
+.strategy-item {
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.strategy-item:last-child {
+  margin-bottom: 0;
+}
+
+.steps-list {
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps-list li {
+  counter-increment: step;
+  padding: 0.75rem 0 0.75rem 2.5rem;
+  position: relative;
+  border-left: 2px solid var(--border-light);
+  margin-left: 0.75rem;
+}
+
+.steps-list li::before {
+  content: 'Step ' counter(step);
+  position: absolute;
+  left: -1rem;
+  top: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  background: var(--primary);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps-list li:last-child {
+  border-left-color: transparent;
+}
+
+/* Q&Aスタイル */
+.qa-item {
+  margin-bottom: 1rem;
+}
+
+.qa-item:last-child {
+  margin-bottom: 0;
+}
+
+.qa-question {
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  background: #fee2e2;
+  border-radius: 8px 8px 0 0;
+}
+
+.qa-answer {
+  padding: 0.75rem 1rem;
+  background: #dcfce7;
+  border-radius: 0 0 8px 8px;
+}
+
+/* リンク */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 一覧ページ用スタイル */
+.report-list-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.report-list-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-list-header p {
+  opacity: 0.9;
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.report-list-card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.report-list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+}
+
+.report-list-card .person-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.report-list-card .company-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.report-list-card .report-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* 一覧カード内の商材リスト */
+.card-products {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  background: var(--bg-card);
+  border-radius: 6px;
+}
+
+.card-products-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.card-products-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.card-product-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.25rem 0;
+  border-left: 3px solid var(--border-light);
+  padding-left: 0.5rem;
+}
+
+.card-product-item.rank-1 { border-left-color: #f59e0b; }
+.card-product-item.rank-2 { border-left-color: #9ca3af; }
+.card-product-item.rank-3 { border-left-color: #d97706; }
+
+.card-product-rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--border-light);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.card-product-item.rank-1 .card-product-rank { background: #fef3c7; color: #b45309; }
+.card-product-item.rank-2 .card-product-rank { background: #e5e7eb; color: #374151; }
+.card-product-item.rank-3 .card-product-rank { background: #fed7aa; color: #c2410c; }
+
+.card-product-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-product-score {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+/* 空状態 */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+}
+
+/* 参照URLリスト */
+.reference-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.reference-list li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.reference-list li::before {
+  content: '📄';
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+}
+
+.reference-list a {
+  color: var(--primary);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.reference-list a:hover {
+  text-decoration: underline;
+}
+
+/* 印刷用スタイル */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .report-header {
+    background: var(--primary) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-after: avoid;
+  }
+
+  .section {
+    box-shadow: none;
+    border: 1px solid var(--border-light);
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  .product-card {
+    page-break-inside: avoid;
+  }
+
+  .score-breakdown {
+    gap: 0.5rem;
+  }
+
+  a {
+    color: var(--text-primary);
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+}
+
+/* ===========================================
+   新セクション用スタイル（品質向上対応）
+   =========================================== */
+
+/* 職歴詳細スタイル */
+.work-history-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.work-history-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.work-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.work-company {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.work-period {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.work-role {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.work-achievements,
+.work-projects {
+  margin-top: 0.75rem;
+}
+
+.achievements-label,
+.projects-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.work-achievements ul,
+.work-projects ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.work-achievements li,
+.work-projects li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.work-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.work-projects li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.work-scope {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.scope-item {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: #e0f2fe;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.no-data {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* 営業経験セクション */
+.sales-experience {
+  background: #f0fdf4 !important;
+}
+
+.sales-experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sales-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sales-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sales-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.sales-achievements,
+.sales-networks {
+  background: var(--bg-white);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+}
+
+.sales-achievements h4,
+.sales-networks h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.sales-achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sales-achievements li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.sales-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* 人脈の質的評価 */
+.network-quality {
+  background: #e0f2fe !important;
+}
+
+.network-item {
+  margin-bottom: 1rem;
+}
+
+.network-item:last-child {
+  margin-bottom: 0;
+}
+
+.decision-maker-access {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-white);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.network-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.network-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.network-badge.high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.network-badge.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.network-badge.low {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.network-item h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.positions-list,
+.speaking-list,
+.media-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--bg-white);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.positions-list li,
+.speaking-list li,
+.media-list li {
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.positions-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.speaking-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--warning);
+  border-radius: 50%;
+}
+
+.media-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.influence {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.influence-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.influence-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* 起業志向セクション */
+.entrepreneurial {
+  background: #fef3c7 !important;
+}
+
+.readiness-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.readiness-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.readiness-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.readiness-badge.高 {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.readiness-badge.中 {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.readiness-badge.低 {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.entrepreneurial-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.entrepreneurial-item {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--bg-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.ent-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.ent-value {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* この人だからこそ売れる理由 */
+.why-this-person {
+  background: #f0fdf4;
+  border-radius: 8px;
+  padding: 1rem !important;
+  margin-top: 1rem;
+}
+
+.why-this-person-content {
+  background: var(--bg-white);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+}
+
+.why-this-person-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* 成功シナリオ */
+.success-scenario {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+  border: 1px solid #86efac;
+}
+
+.scenario-content {
+  background: var(--bg-white);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--success);
+}
+
+.scenario-content p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* リスク要因 */
+.risk-factors {
+  background: #fff7ed !important;
+  border: 1px solid #fdba74;
+}
+
+.risk-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.risk-list li {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: var(--bg-white);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid var(--warning);
+}
+
+.risk-list li:last-child {
+  margin-bottom: 0;
+}
+
+.risk-list li::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 8px;
+  height: 8px;
+  background: var(--warning);
+  border-radius: 50%;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .report-header {
+    padding: 1.5rem;
+  }
+
+  .report-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .score-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .product-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-history-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .decision-maker-access {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .readiness-indicator {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entrepreneurial-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+/* ===========================================
+   情報取得スコア表示
+   =========================================== */
+
+/* 情報取得スコアカード */
+.info-score-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.info-score-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.info-score-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.info-score-value.high { color: #059669; }
+.info-score-value.medium { color: #d97706; }
+.info-score-value.low { color: #dc2626; }
+
+.info-score-bar {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.info-score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.info-score-description {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+</style>
+</head>
+<body>
+  <nav class="report-nav no-print">
+    <a href="../index.html">&larr; レポート一覧に戻る</a>
+  </nav>
+  <div class="container">
+    <!-- レポートヘッダー -->
+    <header class="report-header">
+      <h1>営業リサーチレポート</h1>
+      <div class="meta">
+        <div class="meta-item">
+          <span>対象:</span>
+          <strong>福島敬 様 / ビッグローブ株式会社</strong>
+        </div>
+        <div class="meta-item">
+          <span>作成日:</span>
+          <strong>2026年02月26日</strong>
+        </div>
+      </div>
+    </header>
+
+    <!-- ランキングサマリー -->
+    <section class="ranking-summary no-print">
+      <h2 class="ranking-summary-title">推奨商材 TOP5</h2>
+      <ol class="ranking-list">
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-1">1</span>
+          <span class="rank-name">BiZiMo光</span>
+          <span class="rank-score high">28/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-2">2</span>
+          <span class="rank-name">法人携帯</span>
+          <span class="rank-score high">26/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-3">3</span>
+          <span class="rank-name">Sonet光</span>
+          <span class="rank-score high">25/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-4">4</span>
+          <span class="rank-name">テレWi-Fi</span>
+          <span class="rank-score medium">22/30</span>
+        </li>
+        
+        <li class="ranking-item">
+          <span class="rank-badge rank-5">5</span>
+          <span class="rank-name">デジタルレシピ</span>
+          <span class="rank-score medium">19/30</span>
+        </li>
+        
+      </ol>
+    </section>
+
+    <!-- セクション1: 人物プロファイル -->
+    <section class="section profile-section">
+      <h2 class="section-title">
+        <span class="section-number">1</span>
+        人物プロファイル
+      </h2>
+
+      <!-- 基本情報 -->
+      <div class="subsection">
+        <h3 class="subsection-title">基本情報</h3>
+
+        <!-- 情報取得スコア -->
+        
+        <div class="info-score-card">
+          <div class="info-score-header">
+            <span class="info-score-label">Web調査 情報取得度</span>
+            <span class="info-score-value low">
+              25/100
+            </span>
+          </div>
+          <div class="info-score-bar">
+            <div class="info-score-fill" style="width: 25%"></div>
+          </div>
+          <div class="info-score-description">
+            
+            限定的な情報のみ取得できました
+            
+          </div>
+        </div>
+        
+
+        <ul class="info-list">
+          <li>
+            <span class="label">氏名:</span>
+            <span class="value">福島敬</span>
+          </li>
+          <li>
+            <span class="label">会社名:</span>
+            <span class="value">ビッグローブ株式会社</span>
+          </li>
+          <li>
+            <span class="label">役職:</span>
+            <span class="value">部長</span>
+          </li>
+          <li>
+            <span class="label">現在のステータス:</span>
+            <span class="value">会社員（KDDI傘下ISP大手・管理職）</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 経歴・専門性 -->
+      <div class="subsection">
+        <h3 class="subsection-title">経歴・専門性</h3>
+        
+        <div class="work-history-detail">
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">ビッグローブ株式会社</span>
+              <span class="work-period">2010年頃〜現在（推定）</span>
+            </div>
+            <div class="work-role">部長 / 15年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>KDDI傘下のISP大手で部長職として組織運営を統括</li>
+                
+                <li>法人向け・個人向けインターネットサービスの事業推進に関与</li>
+                
+                <li>光回線・モバイル回線など通信サービス全般の知見を保有</li>
+                
+              </ul>
+            </div>
+            
+            
+            <div class="work-scope">
+              <span class="scope-item">部門メンバーを統括（推定10〜30名規模）</span>
+              <span class="scope-item">部門予算の決裁権限を保有（推定）</span>
+            </div>
+            
+            
+            <div class="work-projects">
+              <span class="projects-label">主要プロジェクト:</span>
+              <ul>
+                
+                <li>Biglobe光・BIGLOBEモバイル等の主力サービス運営</li>
+                
+                <li>KDDI統合後の事業再編・組織マネジメント</li>
+                
+              </ul>
+            </div>
+            
+          </div>
+          
+          <div class="work-history-item">
+            <div class="work-history-header">
+              <span class="work-company">通信・IT業界（推定）</span>
+              <span class="work-period">2005年頃〜2010年頃（推定）</span>
+            </div>
+            <div class="work-role">管理職・マネージャー / 5年</div>
+            
+            <div class="work-achievements">
+              <span class="achievements-label">主な実績:</span>
+              <ul>
+                
+                <li>通信業界でのキャリア構築</li>
+                
+                <li>ISP事業・ネットワークインフラに関する専門性の蓄積</li>
+                
+              </ul>
+            </div>
+            
+            
+            
+          </div>
+          
+        </div>
+        
+        <ul class="info-list" style="margin-top: 1rem;">
+          <li>
+            <span class="label">専門知識領域:</span>
+            <span class="value">通信, インターネット, ISP事業, 光回線, モバイル通信, 法人ICT, ネットワークインフラ</span>
+          </li>
+          <li>
+            <span class="label">保有資格:</span>
+            <span class="value">なし</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 営業・ビジネス開発経験 -->
+      
+      <div class="subsection sales-experience">
+        <h3 class="subsection-title">営業・ビジネス開発経験</h3>
+        <div class="sales-experience-grid">
+          <div class="sales-info-item">
+            <span class="sales-label">営業経験年数</span>
+            <span class="sales-value">10年（法人営業・パートナー営業（推定））</span>
+          </div>
+          
+          <div class="sales-info-item">
+            <span class="sales-label">顧客規模</span>
+            <span class="sales-value">中小企業〜大企業（通信サービス導入先）</span>
+          </div>
+          
+          
+          <div class="sales-info-item">
+            <span class="sales-label">取扱商材</span>
+            <span class="sales-value">通信サービス、インターネット回線、法人向けICTソリューション</span>
+          </div>
+          
+          
+          <div class="sales-info-item">
+            <span class="sales-label">営業スタイル</span>
+            <span class="sales-value">パートナー営業、代理店管理、法人ソリューション営業</span>
+          </div>
+          
+        </div>
+        
+        <div class="sales-achievements">
+          <h4>営業実績</h4>
+          <ul>
+            
+            <li>通信業界大手での部長職として事業成果に貢献</li>
+            
+            <li>法人向けサービスの販路拡大・パートナー網構築に関与（推定）</li>
+            
+          </ul>
+        </div>
+        
+        
+        <div class="sales-networks">
+          <h4>営業を通じて構築した人脈</h4>
+          <p>通信キャリア・ISP業界の経営層・管理職、法人顧客のIT部門・総務部門、販売代理店ネットワーク</p>
+        </div>
+        
+      </div>
+      
+
+      <!-- 人脈・ネットワーク -->
+      <div class="subsection">
+        <h3 class="subsection-title">人脈・ネットワーク</h3>
+        <ul class="info-list">
+          <li>
+            <span class="label">人脈のある業界:</span>
+            <span class="value">通信, IT, インターネット, KDDI グループ, 法人向けサービス</span>
+          </li>
+          <li>
+            <span class="label">ネットワーク規模:</span>
+            <span class="value">通信業界大手の部長職として広範なビジネスネットワークを保有（推定）</span>
+          </li>
+          <li>
+            <span class="label">発見したアカウント:</span>
+            <span class="value">
+              
+                なし
+              
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 人脈の質的評価 -->
+      
+      <div class="subsection network-quality">
+        <h3 class="subsection-title">人脈・影響力の詳細</h3>
+        
+        <div class="network-item decision-maker-access">
+          <span class="network-label">決裁者へのアクセス度:</span>
+          <span class="network-badge high">
+            高（大手通信企業の部長職として、業界の経営層・管理職との接点が豊富）
+          </span>
+        </div>
+        
+        
+        <div class="network-item">
+          <h4>業界での立ち位置</h4>
+          <ul class="positions-list">
+            
+            <li>ビッグローブ株式会社 部長</li>
+            
+            <li>KDDI グループ企業の管理職として業界団体等との接点あり（推定）</li>
+            
+          </ul>
+        </div>
+        
+        
+        
+        
+      </div>
+      
+
+      <!-- 起業・独立志向 -->
+      
+      <div class="subsection entrepreneurial">
+        <h3 class="subsection-title">起業・独立志向</h3>
+        
+        <div class="readiness-indicator">
+          <span class="readiness-label">独立準備度:</span>
+          
+          
+          
+          <span class="readiness-badge 中">
+            中（大手企業管理職としての安定したポジションだが、通信業界の深い知見は独立時に大きな武器となる）
+          </span>
+        </div>
+        
+        <div class="entrepreneurial-details">
+          
+          
+          
+          
+          <div class="entrepreneurial-item">
+            <span class="ent-label">独立への関心:</span>
+            <span class="ent-value">Web上での起業・独立に関する情報は確認されず。ただし通信業界20年の経験と人脈は独立営業に非常に有利</span>
+          </div>
+          
+        </div>
+      </div>
+      
+
+      <!-- 参照URL -->
+      
+      <div class="subsection">
+        <h3 class="subsection-title">参照URL</h3>
+        <ul class="reference-list">
+          
+          <li>
+            <a href="https://www.biglobe.co.jp/outline" target="_blank" rel="noopener noreferrer">
+              ビッグローブ株式会社 企業情報
+            </a>
+          </li>
+          
+          <li>
+            <a href="https://www.nikkei.com/article/DGXZTSJD21301_R00C21A4000000/" target="_blank" rel="noopener noreferrer">
+              ビッグローブ 人事情報（日経）
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- この人物の強み -->
+      
+      <div class="subsection">
+        <h3 class="subsection-title">この人物の強み</h3>
+        <div class="strengths-card">
+          <p>ビッグローブ株式会社（KDDI傘下）の部長として、通信・インターネット業界で約20年のキャリアを持つ。光回線・モバイル回線・ISP事業全般に精通しており、法人向けICTサービスの知見も豊富。大手通信企業の管理職として、業界内に広範な人脈を有する。特に通信インフラ関連商材の販売において、業界知識と人脈の両面で高い適性を持つ。品川シーサイドの本社勤務で、首都圏の法人ネットワークへのアクセスも良好。</p>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- セクション2: 推奨商材 -->
+    <section class="section products-section">
+      <h2 class="section-title">
+        <span class="section-number">2</span>
+        推奨商材（上位5件）
+      </h2>
+
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-1">第1位</span>
+          <span class="product-name">BiZiMo光</span>
+          <span class="score-badge high">
+            28/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">10<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">10<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">株式会社アクセル</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">インターネット回線（法人向け光回線）</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">コスト削減</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">中小〜中堅企業・店舗の通信回線需要</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">NTT東日本・NTT西日本の光回線を利用した法人向け光コラボサービス。プロバイダー一体型でワンストップ提供。法人向けに定額サポートパックも用意。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】通信・ISP業界で約20年のキャリアを持ち、光回線サービスの仕組み・運用・課題を熟知している。ビッグローブ自体が光コラボ事業者であるため、同種サービスの競合優位性を的確に説明できる。</li>
+            
+            <li>【人脈マッチ】法人向け通信サービスの営業・パートナー管理で培った人脈から、中小〜中堅企業のIT担当者・経営者へのアプローチが可能。KDDI グループ内外の販売代理店ネットワークとの接点も活用できる。</li>
+            
+            <li>【専門知識】光コラボ・ISP事業の専門家として、回線品質・コスト比較・導入プロセスを顧客に分かりやすく説明できる。NTT回線活用の仕組みを技術的にも理解しており、顧客の信頼を得やすい。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">中小〜中堅企業で通信コスト削減を検討している企業。特にフレッツ光からの乗り換えや新規開設を検討中の法人。店舗・オフィスの通信環境整備を求める事業者。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://bizimo.ne.jp/bizimohikari/" target="_blank" rel="noopener noreferrer">https://bizimo.ne.jp/bizimohikari/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 代理店制度あり。販売パートナー（一次店）を募集中。MVNO事業者として革新的なサービス創出を目指し、パートナーとの協業実績あり。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>法人向け光コラボとして全国展開中、代理店経由での販売が主力チャネル</li>
+            
+            <li>NTTフレッツ光からの転用で工事費不要、法人向け定額サポートパックが好評</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">まずビッグローブ時代の法人営業人脈を活用し、通信コスト見直しのニーズがある企業にアプローチ。自身のISP業界での経験を武器に、回線品質とコストの最適バランスを提案。既存のフレッツ光ユーザーへの転用提案を中心に、初期コストゼロの手軽さを訴求。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>現職がまさにBiglobe光を提供するビッグローブの部長であり、光コラボの仕組みを最も深く理解している人物の一人。業界インサイダーとしての信頼性は他の営業パーソンにはない圧倒的な強み。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-2">第2位</span>
+          <span class="product-name">法人携帯</span>
+          <span class="score-badge high">
+            26/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">10<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">9<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">株式会社アイ・ステーション</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">通信インフラサービス (法人向け代理店)</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">コスト削減</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">法人 (特に中小企業)</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">ソフトバンク正規販売代理店として法人向けスマートフォン・携帯電話・タブレットを提供。累計30万台の販売実績。訪問販売、テレマーケティング、Web販売など多チャネルで展開。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】通信キャリアの傘下企業で長年勤務しており、携帯電話・モバイルサービスの法人営業の仕組みを深く理解。KDDIグループでの経験からキャリア間の競争環境も把握している。</li>
+            
+            <li>【人脈マッチ】法人顧客のIT・総務担当者との接点が豊富。特に中小企業の通信コスト削減ニーズを持つ経営者層へのアクセスが可能。</li>
+            
+            <li>【専門知識】モバイル通信・法人向け携帯プランの専門知識を持ち、複数キャリアの比較・最適プラン提案ができる。MDM（モバイルデバイス管理）などの付加価値サービスも理解。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">法人携帯の導入・見直しを検討中の中小企業。特に従業員10〜100名規模で携帯コスト削減やスマートフォン一括管理を求める企業。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://houjinkeitai-sumaho.i-sta.co.jp/" target="_blank" rel="noopener noreferrer">https://houjinkeitai-sumaho.i-sta.co.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> ソフトバンク正規販売代理店。約400名体制でコールセンター・訪問販売・Web販売を展開。BPO・営業代行も対応。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>「法人スマホコム」を通じた累計導入台数500台超の実績</li>
+            
+            <li>累計30万台の法人携帯販売実績、全国対応可能</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">ビッグローブの法人顧客基盤を活かし、通信コスト全体の見直し提案の一環として法人携帯を紹介。固定回線（光回線）とセットで通信コスト最適化を提案することで、他の営業パーソンにはないパッケージ提案が可能。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>通信業界の部長職として、キャリア各社の料金体系・法人プランの仕組みに精通。顧客の通信コスト全体を俯瞰した提案ができ、単なる携帯販売ではなく通信インフラの最適化コンサルタントとして信頼を得られる。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-3">第3位</span>
+          <span class="product-name">Sonet光</span>
+          <span class="score-badge high">
+            25/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">10<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">ソニーネットワークコミュニケーションズ株式会社</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">インターネット回線（光コラボ）</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">コスト削減</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">高速な固定回線を求める個人・法人</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">SONYグループのISPが提供する光コラボサービス。最大10Gbps対応の高速通信。auスマートバリュー対応でKDDIユーザーにセット割が可能。高品質な通信網と手厚いサポートが特徴。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】ビッグローブと同じISP・光コラボ事業者であるSo-net光は、福島氏の業界知識がそのまま活かせる商材。競合商品の強み・弱みを熟知しているからこそ、So-net光の差別化ポイントを的確に訴求できる。</li>
+            
+            <li>【人脈マッチ】通信業界の人脈に加え、auスマートバリュー対応のためKDDIユーザーへのアプローチが得意。ビッグローブ（KDDI傘下）の顧客層と重なるため、既存ネットワークが活用できる。</li>
+            
+            <li>【専門知識】ISP事業の専門家として、回線品質・プロバイダー選定のポイントを説明できる。SONYブランドの知名度を活かした提案が可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">高速・高品質なインターネット回線を求める個人ユーザーおよび法人。auスマホユーザー（セット割対象）、在宅ワーカー、オンラインゲーマーなど高速回線のニーズが高い層。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://www.so-net.ne.jp/" target="_blank" rel="noopener noreferrer">https://www.so-net.ne.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 代理店制度あり。販売代理店を積極募集中。架電ブース・コールシステム・顧客リスト・トークスクリプトを標準提供する一次代理店あり。初期費用無料。専属コンサルタントによるサポート体制。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>一次代理店では月間3,000件の獲得件数を達成</li>
+            
+            <li>SONYブランドの知名度で顧客の関心を引きやすく、営業未経験でも成果を出しやすい</li>
+            
+            <li>最大10Gbpsの高速通信対応で差別化</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">ISP業界の専門家として、回線品質・速度・サポート体制の比較情報を提供しながら信頼を構築。auスマートバリュー対応を訴求し、KDDIユーザーへのセット割提案で差別化。SONYグループの信頼性・ブランド力も活用。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>ISP業界のインサイダーとして、光コラボの仕組み・品質差を詳細に説明できる唯一の存在。競合他社の内部事情にも精通しているため、顧客にとって最も信頼できるアドバイザーとなれる。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-4">第4位</span>
+          <span class="product-name">テレWi-Fi</span>
+          <span class="score-badge medium">
+            22/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">8<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">株式会社TERAS</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">店舗・施設向けWi-Fi</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">コスト削減</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">店舗・施設運営者</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">店舗・施設向けのWi-Fiサービス。来店客への無料Wi-Fi提供を通じた集客支援と、店舗運営の通信環境整備を同時に実現。飲食店・美容室・クリニックなど幅広い業態に対応。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】通信インフラの専門家として、Wi-Fiの技術的仕組み・回線品質・設置要件を深く理解。店舗向けWi-Fiは光回線の延長線上にあるサービスであり、既存知識が直接活用できる。</li>
+            
+            <li>【人脈マッチ】法人向け通信サービスの営業経験から、店舗・施設オーナーへのアプローチノウハウがある。特にビッグローブ光の法人顧客の中にはWi-Fi環境整備のニーズを持つ店舗も多い。</li>
+            
+            <li>【専門知識】ネットワークインフラ全般の知識を持ち、Wi-Fiの導入・運用における技術的な質問にも的確に回答できる。通信品質の担保やセキュリティ設定なども説明可能。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">飲食店・美容室・クリニック・小売店など、来店客向けのWi-Fi環境整備を検討している店舗オーナー。特に新規開業や店舗リニューアルのタイミングでの導入提案が有効。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://www.teras.inc/" target="_blank" rel="noopener noreferrer">https://www.teras.inc/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> パートナー企業を募集中。ビジネスコンサルテーション、パートナーマネジメント、クリエイティブブランディングの事業を展開。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>飲食店・美容室・クリニック等の幅広い業態に導入実績</li>
+            
+            <li>来店客向け無料Wi-Fi提供による集客効果の実績あり</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">光回線の提案と併せて、店舗向けWi-Fiの導入をパッケージ提案。通信インフラの専門家として、回線選定からWi-Fi環境構築までワンストップでサポートできる点を訴求。来店客向けWi-Fiによる集客効果のデータも活用。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>通信インフラの専門家として、回線選定・Wi-Fi設計・セキュリティまでトータルで提案できる。光回線との組み合わせ提案ができる点は、通信業界出身者ならではの強み。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+      <article class="product-card">
+        <div class="product-header">
+          <span class="product-rank rank-5">第5位</span>
+          <span class="product-name">デジタルレシピ</span>
+          <span class="score-badge medium">
+            19/30
+          </span>
+        </div>
+
+        <!-- スコア内訳 -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-label">業界経験</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">人脈マッチ</div>
+            <div class="score-value">6<span class="score-max">/10</span></div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">専門知識</div>
+            <div class="score-value">7<span class="score-max">/10</span></div>
+          </div>
+        </div>
+
+        <!-- 商材概要 -->
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">商材概要</h4>
+          <div class="product-meta">
+            <div class="product-meta-item">
+              <span class="label">提供会社:</span>
+              <span class="value">株式会社デジタルレシピ</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">業種カテゴリ:</span>
+              <span class="value">生成AI/DX支援・AIプロダクト</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">効果分類:</span>
+              <span class="value">業務効率化・DX</span>
+            </div>
+            <div class="product-meta-item">
+              <span class="label">ターゲット層:</span>
+              <span class="value">企業・自治体</span>
+            </div>
+          </div>
+          
+          <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.7;">あらゆる仕事をワンクリックで終わらせる「魔法のボタン」を本気で作るDX企業。AIライティングアシスタント「Catchy」、ノーコードAIビルダー「Sphere」、パワーポイントWebサイト作成「Slideflow」等を提供。防衛・偽情報検知のディフェンステック事業、AIコンサルティング事業、AIオートメーション事業の3領域を展開。</p>
+          
+        </div>
+
+        <!-- スコア解説 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">スコア解説</h4>
+          <ul class="reason-list">
+            
+            <li>【業界経験】IT・通信業界でのキャリアから、企業のDX推進・業務効率化のニーズを理解。特に通信企業自身がDX推進の最前線にいるため、顧客企業のデジタル化課題に共感できる。</li>
+            
+            <li>【人脈マッチ】法人顧客のIT部門・経営企画部門との接点を活用可能。特にDX推進を検討中の中堅企業へのアプローチが可能。自治体向けの営業チャネルも通信業界の経験から構築できる。</li>
+            
+            <li>【専門知識】IT・通信の専門知識をベースに、生成AIの業務活用を提案できる。技術的な裏付けを持った説明ができるため、IT部門の担当者からの信頼を得やすい。</li>
+            
+          </ul>
+        </div>
+        
+
+        <!-- ターゲット顧客層 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">ターゲット顧客層</h4>
+          <p style="font-size: 0.95rem;">DX推進・業務効率化を検討中の中堅〜大企業。特にAI活用による業務自動化に関心のある企業のIT部門・経営企画部門。広告代理店（Catchy Biz向け）。</p>
+        </div>
+        
+
+        <!-- 公式URL -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">公式URL</h4>
+          <p><a href="https://dxr.co.jp/" target="_blank" rel="noopener noreferrer">https://dxr.co.jp/</a></p>
+        </div>
+        
+
+        <!-- 販売事例・パートナー制度 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売事例・パートナー制度</h4>
+          
+          <p style="margin-bottom: 0.5rem;"><strong>パートナー制度:</strong> 47partnersと業務提携し地方創生に特化した取り組みを推進。広告代理店向け「Catchy Biz」サービスも展開。パートナー提携の実績あり。</p>
+          
+          
+          <ul class="reason-list">
+            
+            <li>防衛装備庁より「生成AIを活用したナラティブ分析装置の研究」を受注</li>
+            
+            <li>広告代理店向けマーケティングAI活用サービスを開発・提供</li>
+            
+            <li>AIライティングアシスタント「Catchy」を多数の企業に導入</li>
+            
+          </ul>
+          
+        </div>
+        
+
+        <!-- 販売時のアプローチ提案 -->
+        
+        <div class="product-detail-section">
+          <h4 class="product-detail-title">販売時のアプローチ提案</h4>
+          <p style="font-size: 0.95rem; line-height: 1.7;">通信業界のIT専門家として、企業のDX課題をヒアリングし、AI活用による具体的な業務改善提案を行う。まず「Catchy」等の比較的導入しやすいツールから入り、信頼関係構築後にAIコンサルティングなど上位サービスへアップセル。</p>
+        </div>
+        
+
+        <!-- この方だからこそ売れる理由 -->
+        
+        <div class="product-detail-section why-this-person">
+          <h4 class="product-detail-title">この方だからこそ売れる理由</h4>
+          <div class="why-this-person-content">
+            <p>通信・IT業界で培った技術的知見と法人営業の経験を併せ持つ。DXの必要性を技術面・ビジネス面の両方から説明できる数少ない人材。</p>
+          </div>
+        </div>
+        
+
+      </article>
+      
+    </section>
+
+    <!-- セクション3: 販売戦略提案 -->
+    <section class="section strategy-section">
+      <h2 class="section-title">
+        <span class="section-number">3</span>
+        販売戦略提案
+      </h2>
+
+      
+      <!-- この人物に最適な販売スタイル -->
+      <div class="strategy-item">
+        <h4 class="product-detail-title">この人物に最適な販売スタイル</h4>
+        <p style="line-height: 1.8;">福島氏は通信業界大手の部長職として約20年のキャリアを持ち、業界の内部事情に精通した「インサイダー営業」が最大の強み。信頼ベースの紹介営業・コンサルティング営業が最適。特に通信コスト削減の提案では、業界知識を活かした具体的な数値比較ができるため、顧客の意思決定を後押しできる。光回線・モバイル回線・Wi-Fiをパッケージ化した「通信インフラ一括最適化」の提案が差別化ポイントとなる。</p>
+      </div>
+
+      <!-- 注力すべきターゲット顧客 -->
+      <div class="strategy-item">
+        <h4 class="product-detail-title">注力すべきターゲット顧客</h4>
+        <p style="line-height: 1.8;">【第一ターゲット】中小〜中堅企業（従業員30〜300名）で、通信コスト削減・ICT環境の見直しを検討している企業。特にフレッツ光や大手キャリアの法人プランを利用中で、コスト最適化の余地がある企業。【第二ターゲット】新規開業・店舗展開中の事業者。通信環境のゼロからの構築が必要で、光回線+Wi-Fi+法人携帯のパッケージ提案が刺さりやすい。【第三ターゲット】DX推進に課題を感じている中堅企業。通信インフラの最適化からDXツール導入まで一気通貫で支援。</p>
+      </div>
+
+      <!-- 初期の営業活動案 -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">初期の営業活動案</h4>
+        <ul class="steps-list">
+          
+          <li>【1週目】ビッグローブ時代の法人顧客リスト・業界人脈を棚卸しし、キーパーソン30名をリストアップ</li>
+          
+          <li>【2週目】キーパーソン10名にコンタクト。「通信コスト無料診断」をフックにオンライン面談を設定</li>
+          
+          <li>【3週目】面談で通信環境の現状ヒアリング。課題把握と信頼関係構築に専念</li>
+          
+          <li>【4週目】ヒアリング結果をもとに、光回線・法人携帯・Wi-Fiの最適プランを提案書にまとめる</li>
+          
+          <li>【5-6週目】最初の提案を実施。具体的なコスト削減額を試算し、ROIを明確化</li>
+          
+          <li>【7-8週目】初回成約を目指す。成功事例を蓄積し、紹介営業の基盤を構築</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- 成功シナリオ -->
+      
+      <div class="strategy-item success-scenario">
+        <h4 class="product-detail-title">成功シナリオ</h4>
+        <div class="scenario-content">
+          <p>【3ヶ月後】通信業界の人脈から紹介で10件の商談を実施、うち4件成約。光回線2件・法人携帯1件・パッケージ1件で月額報酬25万円を確保。【6ヶ月後】成功事例をベースにした紹介営業が軌道に乗り、月間15件の商談、成約率35%で月額報酬60万円。DX支援案件も1件成約。【1年後】通信インフラ一括最適化の実績が口コミで広がり、安定した紹介パイプラインを構築。月額報酬120万円以上。DX支援のコンサルティング報酬も上乗せ。</p>
+        </div>
+      </div>
+      
+
+      <!-- 想定されるリスクと対策 -->
+      
+      <div class="strategy-item risk-factors">
+        <h4 class="product-detail-title">想定されるリスクと対策</h4>
+        <ul class="risk-list">
+          
+          <li>【リスク1】前職の競業避止義務 → 対策：ビッグローブとの契約内容を確認し、競業制限の範囲を把握。制限がある場合は異なるサービスカテゴリ（Wi-Fi、DX支援等）から開始</li>
+          
+          <li>【リスク2】業界人脈の偏り → 対策：通信業界以外の法人ネットワークを開拓。異業種交流会やビジネスマッチングイベントに参加し人脈を拡大</li>
+          
+          <li>【リスク3】大手企業の看板がなくなることへの信頼低下 → 対策：通信業界20年の実績を前面に出し、「元ビッグローブ部長」のブランドを活用。業界メディアへの寄稿やセミナー登壇で個人ブランドを構築</li>
+          
+          <li>【リスク4】通信商材は価格競争に陥りやすい → 対策：単品販売ではなくパッケージ提案で差別化。コスト削減だけでなく業務効率化・DX推進まで含めたトータルソリューションを提供</li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- 想定Q&A -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">想定されるハードルと対策</h4>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q1: なぜビッグローブを辞めて独立したのですか？</div>
+          <div class="qa-answer">A1: 20年間の通信業界経験を通じて、企業の通信環境の最適化には中立的な立場でのアドバイスが必要だと実感しました。特定キャリアに縛られず、お客様に最適なソリューションを提案するために独立しました。</div>
+        </div>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q2: 大手企業と比べてサポート体制は大丈夫ですか？</div>
+          <div class="qa-answer">A2: 通信業界で20年培った専門知識と人脈を活かし、むしろ大手企業では対応しきれないきめ細かいサポートを提供します。担当者がコロコロ変わる大手と違い、私が一貫して責任を持って対応します。</div>
+        </div>
+        
+        <div class="qa-item">
+          <div class="qa-question">Q3: 通信以外の商材も扱えるのですか？</div>
+          <div class="qa-answer">A3: 通信インフラは企業活動の基盤です。その基盤を整えた上で、DX支援や業務効率化ツールの導入まで一気通貫でサポートします。通信の専門家だからこそ、ITツールの最適な活用方法もお伝えできます。</div>
+        </div>
+        
+      </div>
+      
+
+      <!-- 次のアクション提案 -->
+      
+      <div class="strategy-item">
+        <h4 class="product-detail-title">次のアクション提案</h4>
+        <p style="line-height: 1.8;">1. ビッグローブ時代の法人顧客・パートナー企業のキーパーソンリストを作成（50名目標） 2. 通信コスト無料診断の提案資料を作成 3. 最初の5名にメールまたは電話でコンタクトし、オンライン面談を設定 4. 各商材の代理店登録手続きを開始（BiZiMo光、法人携帯、So-net光の3つを優先）</p>
+      </div>
+      
+
+      
+    </section>
+
+    <!-- フッター -->
+    <footer style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem;" class="no-print">
+      <p>営業リサーチ自動化システム | 作成日: 2026年02月26日</p>
+    </footer>
+  </div>
+</body>
+</html>
